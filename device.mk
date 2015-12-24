@@ -112,6 +112,14 @@ PRODUCT_PACKAGES += \
     ueventd.qcom.rc
 
 # Input
+PRODUCT_COPY_FILES += \
+    $(LOCAL_PATH)/idc/synaptics_dsx.idc:system/usr/idc/synaptics_dsx.idc
+
+PRODUCT_COPY_FILES += \
+    $(LOCAL_PATH)/keylayout/AK8789_HALL_SENSOR.kl:system/usr/keylayout/AK8789_HALL_SENSOR.kl \
+    $(LOCAL_PATH)/keylayout/fpc1020.kl:system/usr/keylayout/fpc1020.kl \
+    $(LOCAL_PATH)/keylayout/gpio-keys.kl:system/usr/keylayout/gpio-keys.kl \
+    $(LOCAL_PATH)/keylayout/synaptics_dsx.kl:system/usr/keylayout/synaptics_dsx.kl
 
 # IRQ
 PRODUCT_COPY_FILES += \
