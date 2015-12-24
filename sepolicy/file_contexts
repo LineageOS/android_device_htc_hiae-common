@@ -1,0 +1,5 @@
+# Audio
+/dev/htc-acoustic               u:object_r:audio_device:s0
+/dev/rt5501                     u:object_r:audio_device:s0
+/dev/tfa9887                    u:object_r:audio_device:s0
+/dev/tfa9887l                   u:object_r:audio_device:s0
