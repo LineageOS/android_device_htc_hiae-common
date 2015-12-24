@@ -157,7 +157,9 @@ PRODUCT_PACKAGES += \
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/libnfc-brcm.conf:system/etc/libnfc-brcm.conf \
     $(LOCAL_PATH)/configs/libnfc-nxp.conf:system/etc/libnfc-nxp.conf \
-    $(LOCAL_PATH)/configs/nfcee_access.xml:system/etc/nfcee_access.xml
+    $(LOCAL_PATH)/configs/nfcee_access.xml:system/etc/nfcee_access.xml \
+    $(LOCAL_PATH)/configs/nfcscc_access.xml:system/etc/nfcscc_access.xml \
+    $(LOCAL_PATH)/configs/nfcse_access.xml:system/etc/nfcse_access.xml
 
 # OMX
 PRODUCT_PACKAGES += \
