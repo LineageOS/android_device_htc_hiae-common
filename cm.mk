@@ -9,7 +9,7 @@ $(call inherit-product, vendor/cm/config/nfc_enhanced.mk)
 PRODUCT_NAME := cm_hiaeul
 BOARD_VENDOR := htc
 TARGET_VENDOR := htc
-PRODUCT_DEVICE := hieul
+PRODUCT_DEVICE := hiaeul
 
 PRODUCT_BUILD_PROP_OVERRIDES += \
     PRODUCT_DEVICE="htc_hiaeul" \
