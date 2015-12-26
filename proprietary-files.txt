@@ -260,6 +260,9 @@ etc/hltrd.bin
 vendor/lib/libmmcamera_imx214_htc.so
 vendor/lib/libmmcamera_ov4688_htc.so
 
+# Clock daemon
+bin/clockd
+
 # DRM
 bin/qseecomd
 vendor/lib64/libdrmfs.so
@@ -464,12 +467,14 @@ bin/rmt_storage
 lib64/libhtc_rilhook.so
 lib64/libril.so
 lib64/librmnetctl.so
+vendor/bin/qti
 vendor/lib64/libcneapiclient.so
 vendor/lib64/libconfigdb.so
 vendor/lib64/libhtcril_db.so
 vendor/lib64/liblqe.so
 vendor/lib64/libmdmdetect.so
 vendor/lib64/libnetmgr.so
+vendor/lib64/libqcmaputils.so
 vendor/lib64/libril-qc-qmi-1.so
 vendor/lib64/libril-qcril-hook-oem.so
 vendor/lib64/libsystem_health_mon.so
