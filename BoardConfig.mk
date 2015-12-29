@@ -20,6 +20,8 @@ DEVICE_PATH := device/htc/hiaeul
 
 TARGET_SPECIFIC_HEADER_PATH := device/htc/hiaeul/include
 
+TARGET_OTA_ASSERT_DEVICE := htc_hiaeul,hiaeul
+
 # Architecture
 TARGET_ARCH := arm64
 TARGET_ARCH_VARIANT := armv8-a
