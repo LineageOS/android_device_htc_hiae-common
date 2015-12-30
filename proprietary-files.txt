@@ -384,6 +384,7 @@ etc/firmware/keymaste.b03:vendor/firmware/keymaster/keymaster.b03
 etc/firmware/keymaste.mdt:vendor/firmware/keymaster/keymaster.mdt
 
 # Lights
+lib64/hw/lights.msm8952.so
 lib/hw/lights.msm8952.so
 
 # Media
