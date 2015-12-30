@@ -501,4 +501,4 @@ service dhcpcd_bnep4 /system/bin/dhcpcd -BKLG
 # Triggers start here
 on class_start:late_start
     # For modem config copy
-    write /data/misc/radio/copy_complete
+    write /data/misc/radio/copy_complete 1
