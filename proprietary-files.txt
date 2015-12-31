@@ -430,9 +430,16 @@ vendor/lib/libperipheral_client.so
 # Postprocessing
 vendor/bin/mm-pp-daemon
 vendor/lib64/libdisp-aba.so
+vendor/lib64/libmm-als.so
+-vendor/lib64/libmm-disp-apis.so
 vendor/lib64/libmm-dspp-utils.so
 vendor/lib64/libmm-qdcm-diag.so
 vendor/lib64/libmm-qdcm.so
+vendor/lib/libmm-als.so
+-vendor/lib/libmm-disp-apis.so
+vendor/lib/libmm-dspp-utils.so
+vendor/lib/libmm-qdcm-diag.so
+vendor/lib/libmm-qdcm.so
 
 # QMI
 bin/irsc_util
