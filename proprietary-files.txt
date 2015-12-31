@@ -415,7 +415,8 @@ etc/firmware/venus-v1.mbn
 etc/firmware/venus-v1.mdt
 
 # NFC
-vendor/firmware/libpn548_fw.so:vendor/firmware/libpn548ad_fw.so
+lib64/hw/nfc_nci.pn54x.default.so
+vendor/firmware/libpn548_fw.so
 
 # Perf
 vendor/bin/perfd
