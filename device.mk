@@ -141,6 +141,10 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     lights.msm8952
 
+# LiveDisplay
+PRODUCT_PACKAGES += \
+    pp_calib_data_samsung_s6e3fa3x01_1080p_command_mode_dsi_panel.xml
+
 # Media
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/media_codecs.xml:system/etc/media_codecs.xml \
