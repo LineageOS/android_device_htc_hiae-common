@@ -192,6 +192,10 @@ PRODUCT_PACKAGES += \
     netmgr_config.xml \
     qmi_config.xml
 
+# Qualcomm dependencies
+PRODUCT_PACKAGES += \
+    libtinyxml
+
 # RIL
 PRODUCT_PACKAGES += \
     libcnefeatureconfig
