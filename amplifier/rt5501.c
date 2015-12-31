@@ -28,49 +28,43 @@
 #include "rt5501.h"
 
 static struct rt55xx_config rt55xx_playback_config = {
-    .reg_len = 9,
+    .reg_len = 7,
     .reg = {
         { 0x00, 0xC0, },
-        { 0x01, 0x1A, }, // gain -2dB
+        { 0x01, 0x1B, }, // gain -1dB
         { 0x02, 0x80, }, // noise gate on
         { 0x08, 0x37, }, // noise gate on
         { 0x07, 0x7F, }, // noise gate setting
         { 0x09, 0x02, }, // noise gate setting
         { 0x0A, 0x03, }, // noise gate setting
         { 0x0B, 0xD8, }, // noise gate 04dB
-        { 0x93, 0xAD, }, // pop noise enlarge CP freq
-        { 0x90, 0x93, }, // fix 1X mode
     },
 };
 
 static struct rt55xx_config rt55xx_playback_128_config = {
-    .reg_len = 9,
+    .reg_len = 7,
     .reg = {
         { 0x00, 0xC0, },
-        { 0x01, 0x1D, }, // gain +1dB
+        { 0x01, 0x1B, }, // gain -1dB
         { 0x02, 0x80, }, // noise gate on
         { 0x08, 0x37, }, // noise gate on
         { 0x07, 0x7F, }, // noise gate setting
         { 0x09, 0x02, }, // noise gate setting
         { 0x0A, 0x03, }, // noise gate setting
         { 0x0B, 0xD8, }, // noise gate -4dB
-        { 0x93, 0xAD, }, // pop noise enlarge CP freq
-        { 0x90, 0x93, }, // fix 1X mode
     },
 };
 
 static struct rt55xx_config rt55xx_voice_config = {
-    .reg_len = 9,
+    .reg_len = 7,
     .reg = {
         { 0x00, 0xC0, },
-        { 0x01, 0x1C, }, // gain 0dB
+        { 0x01, 0x18, }, // gain -4dB
         { 0x02, 0x00, }, // noise gate off
         { 0x07, 0x7F, }, // noise gate setting
         { 0x09, 0x01, }, // noise gate setting
         { 0x0A, 0x00, }, // noise gate setting
         { 0x0B, 0xC7, }, // noise gate -35dB
-        { 0x93, 0xAD, }, // pop noise enlarge CP freq
-        { 0x90, 0x93, }, // fix 1X mode
     },
 };
 
@@ -78,7 +72,7 @@ static struct rt55xx_config rt55xx_ring_config = {
     .reg_len = 8,
     .reg = {
         { 0x00, 0xC0, },
-        { 0x01, 0x1C, }, // gain 0dB
+        { 0x01, 0x0C, }, // gain -16dB
         { 0x02, 0x81, }, // noise gate on
         { 0x08, 0x01, }, // noise gate on
         { 0x07, 0x7F, }, // noise gate setting
