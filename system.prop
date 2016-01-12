@@ -13,6 +13,8 @@ persist.audio.fluence.voicecall=true
 persist.audio.fluence.voicerec=false
 persist.audio.fluence.speaker=true
 
+rec.playback.conc.disabled=true
+
 audio.ds1.metainfo.key=273
 dmid=-1286820014
 
