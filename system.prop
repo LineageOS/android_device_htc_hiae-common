@@ -67,21 +67,6 @@ ro.telephony.call_ring.multiple=false
 ro.telephony.default_network=9
 telephony.lteOnGsmDevice=1
 
-persist.radio.process_sups_ind=1
-
-ro.ril.disable.cpc=1
-
-ro.ril.enable.a53=1
-ro.ril.enable.sdr=1
-
-ro.ril.hsdpa.category=14
-ro.ril.hsupa.category=6
-ro.ril.hsxpa=4
-
-ro.ril.ltefgi=2131754170
-ro.ril.ltefgi.rel10=1747189760
-ro.ril.ltefgi.rel9=2147483648
-
 ro.ril.oem.ecclist=911
 ro.ril.oem.nosim.ecclist=911
 
