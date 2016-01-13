@@ -41,7 +41,6 @@
         <!-- input devices -->
         <!-- used for input handset -->
         <device name="SND_DEVICE_IN_HANDSET_MIC" acdb_id="4" />
-        <device name="SND_DEVICE_IN_HANDSET_MIC_EXTERNAL" acdb_id="4" />
         <device name="SND_DEVICE_IN_HANDSET_DMIC" acdb_id="4" />
 
         <!-- used for voip handset -->
@@ -120,7 +119,6 @@
         <!-- input devices -->
         <!-- used for input handset -->
         <device name="SND_DEVICE_IN_HANDSET_MIC" alias="line-vr" />
-        <device name="SND_DEVICE_IN_HANDSET_MIC_EXTERNAL" alias="line-vr" />
         <device name="SND_DEVICE_IN_HANDSET_DMIC" alias="line-vr" />
 
         <!-- used for voip handset -->
@@ -133,26 +131,29 @@
 
         <!-- used for input speaker -->
         <device name="SND_DEVICE_IN_SPEAKER_MIC" alias="line-vr" />
-        <device name="SND_DEVICE_IN_SPEAKER_MIC_AEC" alias="line-vr" />
-        <device name="SND_DEVICE_IN_SPEAKER_MIC_NS" alias="line-vr" />
-        <device name="SND_DEVICE_IN_SPEAKER_MIC_AEC_NS" alias="line-vr" />
+        <device name="SND_DEVICE_IN_SPEAKER_DMIC" alias="line-vr" />
         <device name="SND_DEVICE_IN_SPEAKER_STEREO_DMIC" alias="line-vr" />
 
         <!-- used for voip speaker -->
-        <device name="SND_DEVICE_IN_SPEAKER_DMIC" alias="line-hw-voip" />
+        <device name="SND_DEVICE_IN_SPEAKER_MIC_AEC" alias="line-hw-voip" />
+        <device name="SND_DEVICE_IN_SPEAKER_MIC_NS" alias="line-hw-voip" />
+        <device name="SND_DEVICE_IN_SPEAKER_MIC_AEC_NS" alias="line-hw-voip" />
         <device name="SND_DEVICE_IN_SPEAKER_DMIC_AEC" alias="line-hw-voip" />
         <device name="SND_DEVICE_IN_SPEAKER_DMIC_NS" alias="line-hw-voip" />
         <device name="SND_DEVICE_IN_SPEAKER_DMIC_AEC_NS" alias="line-hw-voip" />
 
         <!-- used for input headset -->
         <device name="SND_DEVICE_IN_HEADSET_MIC" alias="headset" />
-        <device name="SND_DEVICE_IN_HEADSET_MIC_FLUENCE" alias="headset" />
+
+        <!-- used for voip headset -->
+        <device name="SND_DEVICE_IN_HEADSET_MIC_FLUENCE" alias="headset-hw-voip" />
 
         <!-- used for call headset -->
         <device name="SND_DEVICE_IN_VOICE_HEADSET_MIC" alias="headset-voice" />
 
         <!-- used for camcorder -->
         <device name="SND_DEVICE_IN_CAMCORDER_MIC" alias="line-portraitcam" />
+        <!-- 8952 HAL can't distinguish CAMCORDER_STEREO, make HANDSET_STEREO_DMIC camcorder too -->
         <device name="SND_DEVICE_IN_HANDSET_STEREO_DMIC" alias="line-portraitcam" />
 
         <!-- used for call handset -->
