@@ -113,7 +113,7 @@
         <device name="SND_DEVICE_OUT_VOICE_SPEAKER" alias="speaker-voice" />
         <device name="SND_DEVICE_OUT_VOICE_HEADPHONES" alias="headphones-voice" />
         <device name="SND_DEVICE_OUT_VOIP_HANDSET" alias="earpiece-hw-voip" />
-        <device name="SND_DEVICE_OUT_VOIP_SPEAKER" alias="speaker-hw-voip" />
+        <device name="SND_DEVICE_OUT_VOIP_SPEAKER" alias="speaker" />
         <device name="SND_DEVICE_OUT_VOIP_HEADPHONES" alias="headphones-hw-voip" />
 
         <!-- input devices -->
