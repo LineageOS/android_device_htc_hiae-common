@@ -6,7 +6,9 @@ LOCAL_SHARED_LIBRARIES := \
 	liblog libutils libtinyalsa
 
 LOCAL_CFLAGS += \
-	-DPLATFORM_MSM8994
+	-DPLATFORM_MSM8916 \
+	-DRECORD_PLAY_CONCURRENCY \
+	-DMULTI_VOICE_SESSION_ENABLED
 
 LOCAL_C_INCLUDES := \
 	external/tinyalsa/include \

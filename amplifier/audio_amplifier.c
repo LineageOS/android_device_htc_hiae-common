@@ -32,17 +32,17 @@
 
 #define UNUSED __attribute__((unused))
 
-typedef struct m9_device {
+typedef struct a9_device {
     amplifier_device_t amp_dev;
     audio_mode_t current_mode;
-} m9_device_t;
+} a9_device_t;
 
-static m9_device_t *m9_dev = NULL;
+static a9_device_t *a9_dev = NULL;
 
 static int amp_set_mode(amplifier_device_t *device, audio_mode_t mode)
 {
     int ret = 0;
-    m9_device_t *dev = (m9_device_t *) device;
+    a9_device_t *dev = (a9_device_t *) device;
 
     dev->current_mode = mode;
 
@@ -51,12 +51,13 @@ static int amp_set_mode(amplifier_device_t *device, audio_mode_t mode)
 
 static int amp_set_output_devices(amplifier_device_t *device, uint32_t devices)
 {
-    m9_device_t *dev = (m9_device_t *) device;
+    a9_device_t *dev = (a9_device_t *) device;
 
     switch (devices) {
         case SND_DEVICE_OUT_HEADPHONES:
-        case SND_DEVICE_OUT_VOICE_HEADPHONES:
         case SND_DEVICE_OUT_SPEAKER_AND_HEADPHONES:
+        case SND_DEVICE_OUT_VOICE_HEADPHONES:
+        case SND_DEVICE_OUT_VOIP_HEADPHONES:
             rt55xx_set_mode(dev->current_mode);
             break;
     }
@@ -67,14 +68,13 @@ static int amp_set_output_devices(amplifier_device_t *device, uint32_t devices)
 static int amp_enable_output_devices(amplifier_device_t *device,
         uint32_t devices, bool enable)
 {
-    m9_device_t *dev = (m9_device_t *) device;
+    a9_device_t *dev = (a9_device_t *) device;
 
     switch (devices) {
         case SND_DEVICE_OUT_SPEAKER:
-        case SND_DEVICE_OUT_SPEAKER_REVERSE:
-        case SND_DEVICE_OUT_VOICE_SPEAKER:
-        case SND_DEVICE_OUT_SPEAKER_PROTECTED:
         case SND_DEVICE_OUT_SPEAKER_AND_HEADPHONES:
+        case SND_DEVICE_OUT_VOICE_SPEAKER:
+        case SND_DEVICE_OUT_VOIP_SPEAKER:
             tfa9887_power(enable);
             if (enable) {
                 /* FIXME: This may fail because I2S is not active */
@@ -88,7 +88,7 @@ static int amp_enable_output_devices(amplifier_device_t *device,
 
 static int amp_dev_close(hw_device_t *device)
 {
-    m9_device_t *dev = (m9_device_t *) device;
+    a9_device_t *dev = (a9_device_t *) device;
 
     tfa9887_power(false);
     tfa9887_close();
@@ -101,37 +101,37 @@ static int amp_dev_close(hw_device_t *device)
 static int amp_module_open(const hw_module_t *module, UNUSED const char *name,
         hw_device_t **device)
 {
-    if (m9_dev) {
+    if (a9_dev) {
         ALOGE("%s:%d: Unable to open second instance of TFA9887 amplifier\n",
                 __func__, __LINE__);
         return -EBUSY;
     }
 
-    m9_dev = calloc(1, sizeof(m9_device_t));
-    if (!m9_dev) {
+    a9_dev = calloc(1, sizeof(a9_device_t));
+    if (!a9_dev) {
         ALOGE("%s:%d: Unable to allocate memory for amplifier device\n",
                 __func__, __LINE__);
         return -ENOMEM;
     }
 
-    m9_dev->amp_dev.common.tag = HARDWARE_DEVICE_TAG;
-    m9_dev->amp_dev.common.module = (hw_module_t *) module;
-    m9_dev->amp_dev.common.version = HARDWARE_DEVICE_API_VERSION(1, 0);
-    m9_dev->amp_dev.common.close = amp_dev_close;
+    a9_dev->amp_dev.common.tag = HARDWARE_DEVICE_TAG;
+    a9_dev->amp_dev.common.module = (hw_module_t *) module;
+    a9_dev->amp_dev.common.version = HARDWARE_DEVICE_API_VERSION(1, 0);
+    a9_dev->amp_dev.common.close = amp_dev_close;
 
-    m9_dev->amp_dev.set_input_devices = NULL;
-    m9_dev->amp_dev.set_output_devices = amp_set_output_devices;
-    m9_dev->amp_dev.enable_input_devices = NULL;
-    m9_dev->amp_dev.enable_output_devices = amp_enable_output_devices;
-    m9_dev->amp_dev.set_mode = amp_set_mode;
-    m9_dev->amp_dev.output_stream_start = NULL;
-    m9_dev->amp_dev.input_stream_start = NULL;
-    m9_dev->amp_dev.output_stream_standby = NULL;
-    m9_dev->amp_dev.input_stream_standby = NULL;
+    a9_dev->amp_dev.set_input_devices = NULL;
+    a9_dev->amp_dev.set_output_devices = amp_set_output_devices;
+    a9_dev->amp_dev.enable_input_devices = NULL;
+    a9_dev->amp_dev.enable_output_devices = amp_enable_output_devices;
+    a9_dev->amp_dev.set_mode = amp_set_mode;
+    a9_dev->amp_dev.output_stream_start = NULL;
+    a9_dev->amp_dev.input_stream_start = NULL;
+    a9_dev->amp_dev.output_stream_standby = NULL;
+    a9_dev->amp_dev.input_stream_standby = NULL;
 
-    m9_dev->current_mode = AUDIO_MODE_NORMAL;
+    a9_dev->current_mode = AUDIO_MODE_NORMAL;
 
-    *device = (hw_device_t *) m9_dev;
+    *device = (hw_device_t *) a9_dev;
 
     tfa9887_open();
     rt55xx_open();
