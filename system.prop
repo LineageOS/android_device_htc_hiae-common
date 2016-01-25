@@ -43,9 +43,6 @@ ro.sf.lcd_density=480
 # Factory Reset Protection
 ro.frp.pst=/dev/block/bootdevice/by-name/frp
 
-# IO Scheduler
-sys.io.scheduler=bfq
-
 # NITZ
 persist.rild.nitz_plmn=
 persist.rild.nitz_long_ons_0=
