@@ -63,8 +63,6 @@ rild.libpath=/system/lib64/libhtc_rilhook.so
 ro.baseband.arch=msm
 ro.ril.telephony.mqanelements=5
 ro.telephony.call_ring.multiple=false
-ro.telephony.default_network=9
-telephony.lteOnGsmDevice=1
 
 ro.ril.oem.ecclist=911
 ro.ril.oem.nosim.ecclist=911

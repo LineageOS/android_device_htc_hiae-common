@@ -1,6 +1,6 @@
-Copyright 2015 - The CyanogenMod Project
+Copyright 2016 - The CyanogenMod Project
 
-Device configuration for HTC One A9
+Common device configuration for HTC One A9
 =====================================
 
 Basic   | Spec Sheet

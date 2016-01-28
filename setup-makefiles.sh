@@ -1,7 +1,7 @@
 #!/bin/bash
 
 export VENDOR=htc
-export DEVICE=hiaeul
+export DEVICE=hiae-common
 
 OUTDIR=vendor/$VENDOR/$DEVICE
 MAKEFILE=../../../$OUTDIR/$DEVICE-vendor-blobs.mk

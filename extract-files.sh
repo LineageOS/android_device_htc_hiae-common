@@ -1,7 +1,7 @@
 #!/bin/bash
 
 export VENDOR=htc
-export DEVICE=hiaeul
+export DEVICE=hiae-common
 
 function extract() {
     for FILE in `egrep -v '(^#|^$)' $1`; do
