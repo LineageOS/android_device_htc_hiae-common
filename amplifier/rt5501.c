@@ -28,7 +28,7 @@
 #include "rt5501.h"
 
 static struct rt55xx_config rt55xx_playback_config = {
-    .reg_len = 7,
+    .reg_len = 8,
     .reg = {
         { 0x00, 0xC0, },
         { 0x01, 0x1B, }, // gain -1dB
@@ -37,12 +37,12 @@ static struct rt55xx_config rt55xx_playback_config = {
         { 0x07, 0x7F, }, // noise gate setting
         { 0x09, 0x02, }, // noise gate setting
         { 0x0A, 0x03, }, // noise gate setting
-        { 0x0B, 0xD8, }, // noise gate 04dB
+        { 0x0B, 0xD8, }, // noise gate -4dB
     },
 };
 
 static struct rt55xx_config rt55xx_playback_128_config = {
-    .reg_len = 7,
+    .reg_len = 8,
     .reg = {
         { 0x00, 0xC0, },
         { 0x01, 0x1B, }, // gain -1dB
