@@ -385,6 +385,7 @@ etc/firmware/keymaste.b01:vendor/firmware/keymaster/keymaster.b01
 etc/firmware/keymaste.b02:vendor/firmware/keymaster/keymaster.b02
 etc/firmware/keymaste.b03:vendor/firmware/keymaster/keymaster.b03
 etc/firmware/keymaste.mdt:vendor/firmware/keymaster/keymaster.mdt
+vendor/lib64/hw/keystore.msm8952.so
 
 # Media
 vendor/lib/libI420colorconvert.so

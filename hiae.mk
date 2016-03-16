@@ -143,10 +143,6 @@ PRODUCT_COPY_FILES += \
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/sec_config:system/etc/sec_config
 
-# Keymaster
-PRODUCT_PACKAGES += \
-    keystore.msm8952
-
 # Lights
 PRODUCT_PACKAGES += \
     lights.msm8952
