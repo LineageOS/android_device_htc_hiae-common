@@ -370,7 +370,7 @@ service netmgrd /system/bin/netmgrd
     class main
 
 service per_mgr /system/bin/pm-service
-    class core
+    class late_start
     user system
     group system net_raw
 
