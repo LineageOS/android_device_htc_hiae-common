@@ -189,10 +189,6 @@ PRODUCT_PACKAGES += \
     libOmxVenc \
     libstagefrighthw
 
-# Power
-PRODUCT_PACKAGES += \
-    power.msm8952
-
 # QMI
 PRODUCT_PACKAGES += \
     dsi_config.xml \
