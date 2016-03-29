@@ -58,11 +58,38 @@ persist.rild.nitz_short_ons_3=
 ro.vendor.extension_library=libqti-perfd-client.so
 
 # Radio
+persist.data.mode=concurrent
+persist.data.netmgrd.qos.enable=true
+
+persist.lte.band.pref=1000185E
+
 rild.libargs=-d /dev/smd0
 rild.libpath=/system/lib64/libhtc_rilhook.so
 ro.baseband.arch=msm
 ro.ril.telephony.mqanelements=5
 ro.telephony.call_ring.multiple=false
+
+ro.ril.disable.cpc=1
+ro.ril.enable.isr=1
+ro.ril.enable.sdr=1
+
+ro.ril.enable.pre_r8fd=1
+ro.ril.fd.pre_r8_tout.scr_off=3600
+ro.ril.fd.pre_r8_tout.scr_on=0
+
+ro.ril.enable.r8fd=0
+ro.ril.fd.r8_tout.scr_off=0
+ro.ril.fd.r8_tout.scr_on=0
+
+ro.ril.gprsclass=10
+ro.ril.hsdpa.category=14
+ro.ril.hsupa.category=6
+ro.ril.hsxpa=4
+
+ro.ril.lte3gpp=69
+ro.ril.ltefgi=2131754170
+ro.ril.ltefgi.rel9=2147483648
+ro.ril.ltefgi.rel10=1747189760
 
 ro.ril.oem.ecclist=911
 ro.ril.oem.nosim.ecclist=911

@@ -302,4 +302,7 @@
     <!-- Operating volatage for bluetooth controller. 0 by default-->
     <integer translatable="false" name="config_bluetooth_operating_voltage_mv">3300</integer>
 
+    <!-- Configure mobile network MTU. The standard default is set here but each carrier
+         may have a specific value set in an overlay config.xml file. -->
+    <integer name="config_mobile_mtu">1430</integer>
 </resources>
