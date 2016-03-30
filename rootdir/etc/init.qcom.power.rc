@@ -110,6 +110,7 @@ on enable-low-power
 
     # Enable core control
     insmod /system/lib/modules/msm_core_ctl.ko
+
     write /sys/devices/system/cpu/cpu0/core_ctl/min_cpus 0
     write /sys/devices/system/cpu/cpu0/core_ctl/max_cpus 4
     write /sys/devices/system/cpu/cpu0/core_ctl/busy_up_thres 60
@@ -117,13 +118,9 @@ on enable-low-power
     write /sys/devices/system/cpu/cpu0/core_ctl/offline_delay_ms 100
     write /sys/devices/system/cpu/cpu0/core_ctl/is_big_cluster 1
     write /sys/devices/system/cpu/cpu0/core_ctl/task_thres 4
-    write /sys/devices/system/cpu/cpu4/core_ctl/min_cpus 1
-    write /sys/devices/system/cpu/cpu4/core_ctl/max_cpus 4
-    write /sys/devices/system/cpu/cpu4/core_ctl/busy_up_thres 30
-    write /sys/devices/system/cpu/cpu4/core_ctl/busy_down_thres 15
-    write /sys/devices/system/cpu/cpu4/core_ctl/offline_delay_ms  100
-    write /sys/devices/system/cpu/cpu4/core_ctl/is_big_cluster 0
-    write /sys/devices/system/cpu/cpu4/core_ctl/task_thres 2
+
+    # RPS
+    write /sys/class/net/rmnet_ipa0/queues/rx-0/rps_cpus "f0"
 
     # Enable dynamic clock gating
     write /sys/module/lpm_levels/lpm_workarounds/dynamic_clock_gating 1
