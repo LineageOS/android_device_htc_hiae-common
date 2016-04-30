@@ -99,6 +99,10 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     Dotcase
 
+# Fingerprint
+PRODUCT_PACKAGES += \
+    fingerprintd
+
 # GPS
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/flp.conf:system/etc/flp.conf \

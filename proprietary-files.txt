@@ -300,7 +300,6 @@ etc/firmware/widevine.b03
 etc/firmware/widevine.mdt
 
 # Fingerprint
-bin/fingerprintd
 etc/firmware/fpctzappfingerprint.b00
 etc/firmware/fpctzappfingerprint.b01
 etc/firmware/fpctzappfingerprint.b02
