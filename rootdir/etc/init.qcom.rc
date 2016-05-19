@@ -398,6 +398,7 @@ service per_mgr /system/bin/pm-service
 service perfd /system/vendor/bin/perfd
     class main
     user root
+    group root readproc
     disabled
     writepid /dev/cpuset/system-background/tasks
 
