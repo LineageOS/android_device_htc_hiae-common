@@ -378,6 +378,34 @@ etc/firmware/a420_pm4.fw
 # IPA
 bin/ipacm-diag
 
+# IMS
+bin/imscmservice
+bin/imsdatadaemon
+bin/imsqmidaemon
+bin/ims_rtp_daemon
+vendor/lib64/lib-dplmedia.so
+vendor/lib64/libimscamera_jni.so
+vendor/lib64/libimsmedia_jni.so
+vendor/lib64/lib-imscamera.so
+vendor/lib64/lib-imsdpl.so
+vendor/lib64/lib-imsqimf.so
+vendor/lib64/lib-imsrcscmclient.so
+vendor/lib64/lib-ims-rcscmjni.so
+vendor/lib64/lib-imsrcscmservice.so
+vendor/lib64/lib-imsrcscm.so
+vendor/lib64/lib-imsrcs.so
+vendor/lib64/lib-imsSDP.so
+vendor/lib64/lib-imss.so
+vendor/lib64/lib-imsvt.so
+vendor/lib64/lib-imsxml.so
+vendor/lib64/lib-rcsimssjni.so
+vendor/lib64/lib-rtpcommon.so
+vendor/lib64/lib-rtpcore.so
+vendor/lib64/lib-rtpdaemoninterface.so
+vendor/lib64/lib-rtpsl.so
+vendor/lib64/libvoice-svc.so
+-vendor/app/ims/ims.apk
+
 # Keymaster
 etc/firmware/keymaste.b00:vendor/firmware/keymaster/keymaster.b00
 etc/firmware/keymaste.b01:vendor/firmware/keymaster/keymaster.b01
