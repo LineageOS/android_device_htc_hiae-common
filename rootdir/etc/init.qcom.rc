@@ -364,6 +364,7 @@ service msm_irqbalance /system/bin/msm_irqbalance -f /system/vendor/etc/msm_irqb
     class main
     user root
     group root
+    writepid /dev/cpuset/system-background/tasks
 
 service netmgrd /system/bin/netmgrd
     class main
@@ -377,6 +378,7 @@ service perfd /system/vendor/bin/perfd
     class main
     user root
     disabled
+    writepid /dev/cpuset/system-background/tasks
 
 service ppd /system/vendor/bin/mm-pp-daemon
     class late_start
@@ -395,6 +397,7 @@ service qcamerasvr /system/bin/mm-qcamera-daemon
     class main
     user camera
     group camera system inet input graphics
+    writepid /dev/cpuset/system-background/tasks
 
 service qmuxd /system/bin/qmuxd
     class core
