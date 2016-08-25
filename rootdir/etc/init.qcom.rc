@@ -67,6 +67,8 @@ on post-fs-data
     mkdir /persist/data/tz 0700 system system
     mkdir /persist/tee 0700 system system
 
+    mkdir /dev/radio 0770 radio radio
+
     # Create directory for audio
     mkdir /data/data/media 0770 media media
     mkdir /data/misc/audio 0770 audio audio
