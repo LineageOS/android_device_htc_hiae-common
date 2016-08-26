@@ -379,11 +379,11 @@ etc/firmware/a420_pm4.fw
 bin/ipacm-diag
 
 # Keymaster
-etc/firmware/keymaste.b00:vendor/firmware/keymaster/keymaster.b00
-etc/firmware/keymaste.b01:vendor/firmware/keymaster/keymaster.b01
-etc/firmware/keymaste.b02:vendor/firmware/keymaster/keymaster.b02
-etc/firmware/keymaste.b03:vendor/firmware/keymaster/keymaster.b03
-etc/firmware/keymaste.mdt:vendor/firmware/keymaster/keymaster.mdt
+etc/firmware/keymaste.b00
+etc/firmware/keymaste.b01
+etc/firmware/keymaste.b02
+etc/firmware/keymaste.b03
+etc/firmware/keymaste.mdt
 vendor/lib64/hw/keystore.msm8952.so
 
 # Media
