@@ -34,7 +34,7 @@ on early-init
 
     mkdir /carrier 0770 system system
     mkdir /dsp 0771 media media
-    mkdir /firmware 0771 system system
+    chown system system /firmware/image
     mkdir /firmware/adsp 0771 system system
     mkdir /firmware/radio 0771 system system
     mkdir /firmware/wcnss 0771 system system
