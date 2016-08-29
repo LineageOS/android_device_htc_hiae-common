@@ -34,6 +34,7 @@ ro.qualcomm.bt.hci_transport=smd
 
 # Camera
 camera2.portability.force_api=1
+persist.camera.tuning_spec=htc
 
 # Display
 persist.hwc.mdpcomp.enable=true
