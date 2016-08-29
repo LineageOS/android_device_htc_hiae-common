@@ -121,11 +121,6 @@ on post-fs-data
     # Create directory for modem config
     mkdir /data/misc/radio/modem_config 0770 radio radio
 
-    # Mark the copy complete flag to not completed
-    write /data/misc/radio/copy_complete 0
-    chown radio radio /data/misc/radio/copy_complete
-    chmod 0660 /data/misc/radio/copy_complete
-
     # Create directory for NFC
     mkdir /data/nfc 0770 nfc nfc
     mkdir /data/nfc/param 0770 nfc nfc
@@ -520,8 +515,3 @@ service dhcpcd_bnep3 /system/bin/dhcpcd -BKLG
 service dhcpcd_bnep4 /system/bin/dhcpcd -BKLG
     disabled
     oneshot
-
-# Triggers start here
-on class_start:late_start
-    # For modem config copy
-    write /data/misc/radio/copy_complete 1
