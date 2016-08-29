@@ -33,7 +33,9 @@ ro.qualcomm.bluetooth.pbap=true
 ro.qualcomm.bt.hci_transport=smd
 
 # Camera
-camera2.portability.force_api=1
+camera.hal1.packagelist=com.skype.raider,com.google.android.talk
+camera.lowpower.record.enable=1
+persist.camera.tuning_spec=htc
 
 # Display
 persist.hwc.mdpcomp.enable=true
