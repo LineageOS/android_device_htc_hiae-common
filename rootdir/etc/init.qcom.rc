@@ -374,7 +374,7 @@ service netmgrd /system/bin/netmgrd
     class main
 
 service per_mgr /system/bin/pm-service
-    class late_start
+    class core
     user system
     group system net_raw
 
@@ -404,7 +404,7 @@ service qcamerasvr /system/bin/mm-qcamera-daemon
     writepid /dev/cpuset/system-background/tasks
 
 service qmuxd /system/bin/qmuxd
-    class core
+    class main
     user root
     group radio audio bluetooth gps qcom_diag
 
