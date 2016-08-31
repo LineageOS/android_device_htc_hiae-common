@@ -496,6 +496,38 @@ vendor/lib64/libril-qcril-hook-oem.so
 vendor/lib64/libsystem_health_mon.so
 vendor/lib64/libxml.so
 
+# Radio firmware
+vendor/firmware/mba.b00
+vendor/firmware/mba.b01
+vendor/firmware/mba.b02
+vendor/firmware/mba.b03
+vendor/firmware/mba.b04
+vendor/firmware/mba.b05
+vendor/firmware/mba.mbn
+vendor/firmware/mba.mdt
+vendor/firmware/modem.b00
+vendor/firmware/modem.b01
+vendor/firmware/modem.b02
+vendor/firmware/modem.b04
+vendor/firmware/modem.b05
+vendor/firmware/modem.b06
+vendor/firmware/modem.b07
+vendor/firmware/modem.b08
+vendor/firmware/modem.b09
+vendor/firmware/modem.b10
+vendor/firmware/modem.b11
+vendor/firmware/modem.b12
+vendor/firmware/modem.b13
+vendor/firmware/modem.b16
+vendor/firmware/modem.b17
+vendor/firmware/modem.b18
+vendor/firmware/modem.b19
+vendor/firmware/modem.b20
+vendor/firmware/modem.mdt
+vendor/firmware/qdsp6m.qdb
+vendor/firmware/radiover.cfg
+vendor/firmware/version.cfg
+
 # Sensors
 lib64/hw/sensors.msm8952.so
 
