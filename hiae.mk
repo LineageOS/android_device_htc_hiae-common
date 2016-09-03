@@ -214,6 +214,10 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     libtinyxml
 
+# Recovery
+PRODUCT_PACKAGES += \
+    librecovery_updater_hiae
+
 # RIL
 PRODUCT_PACKAGES += \
     libcnefeatureconfig \
