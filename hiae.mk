@@ -115,8 +115,8 @@ PRODUCT_PACKAGES += \
     fingerprintd
 
 # Gesture Handler
-PRODUCT_PACKAGES += \
-    GestureHandler
+#PRODUCT_PACKAGES += \
+#    GestureHandler
 
 # GPS
 PRODUCT_COPY_FILES += \
