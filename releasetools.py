@@ -33,7 +33,7 @@ def AddSbl1Assertion(info, input_zip):
   if m:
     versions = m.group(1).split('|')
     if len(versions) and '*' not in versions:
-      cmd = 'assert(hima.verify_sbl1(' + ','.join(['"%s"' % sbl1 for sbl1 in versions]) + ') == "1");'
+      cmd = 'assert(hiae.verify_sbl1(' + ','.join(['"%s"' % sbl1 for sbl1 in versions]) + ') == "1");'
       info.script.AppendExtra(cmd)
   return
 
