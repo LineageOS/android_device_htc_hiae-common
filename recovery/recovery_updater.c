@@ -43,7 +43,7 @@
 #define TZ_VER_STR "QC_IMAGE_VERSION_STRING="
 #define TZ_VER_STR_LEN 24
 #define TZ_VER_BUF_LEN 255
-#define TZ_SZ 500 * KB    /* MMAP 500K of TZ, TZ partition is 500K */
+#define TZ_SZ 1024 * KB    /* MMAP 1024K of TZ, TZ partition is 1024K */
 
 /* Boyer-Moore string search implementation from Wikipedia */
 
@@ -241,7 +241,7 @@ Value * VerifyTrustZoneFn(const char *name, State *state, int argc, Expr *argv[]
     }
 
     for (i = 0; i < argc; i++) {
-        uiPrintf(state, "Checking for TZ version %s", tz_version[i]);
+        uiPrintf(state, "Checking for TZ version %s\n", tz_version[i]);
         if (strncmp(tz_version[i], current_tz_version, strlen(tz_version[i])) == 0) {
             found_tz = true;
             break;
@@ -253,7 +253,7 @@ Value * VerifyTrustZoneFn(const char *name, State *state, int argc, Expr *argv[]
     }
     free(tz_version);
 
-    return StringValue(strdup(found_tz ? "0" : "1"));
+    return StringValue(strdup(found_tz ? "1" : "0"));
 }
 
 void Register_librecovery_updater_hiae() {
