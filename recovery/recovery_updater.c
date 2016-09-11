@@ -193,6 +193,7 @@ err_ret:
 Value * VerifySBL1Fn(const char *name, State *state, int argc, Expr *argv[]) {
     char current_sbl1_version[SBL1_VER_BUF_LEN];
     int i, ret;
+    bool found_blacklisted_sbl = false;
 
     ret = get_sbl1_version(current_sbl1_version, SBL1_VER_BUF_LEN);
     if (ret) {
@@ -205,11 +206,12 @@ Value * VerifySBL1Fn(const char *name, State *state, int argc, Expr *argv[]) {
         return ErrorAbort(state, "%s() error parsing arguments", name);
     }
 
-    ret = 0;
     for (i = 0; i < argc; i++) {
         uiPrintf(state, "Checking for SBL1 version %s\n", sbl1_version[i]);
         if (strncmp(sbl1_version[i], current_sbl1_version, strlen(sbl1_version[i])) == 0) {
-            ret = 1;
+            found_blacklisted_sbl = true;
+            uiPrintf(state, "Found blacklisted SBL1 version, update your firmware\n",
+                sbl1_version[i]);
             break;
         }
     }
@@ -219,7 +221,7 @@ Value * VerifySBL1Fn(const char *name, State *state, int argc, Expr *argv[]) {
     }
     free(sbl1_version);
 
-    return StringValue(strdup(ret ? "1" : "0"));
+    return StringValue(strdup(found_blacklisted_sbl ? "0" : "1"));
 }
 
 
@@ -227,7 +229,7 @@ Value * VerifySBL1Fn(const char *name, State *state, int argc, Expr *argv[]) {
 Value * VerifyTrustZoneFn(const char *name, State *state, int argc, Expr *argv[]) {
     char current_tz_version[TZ_VER_BUF_LEN];
     int i, ret;
-    bool found_tz = false;
+    bool found_blacklisted_tz = false;
 
     ret = get_tz_version(current_tz_version, TZ_VER_BUF_LEN);
     if (ret) {
@@ -243,7 +245,9 @@ Value * VerifyTrustZoneFn(const char *name, State *state, int argc, Expr *argv[]
     for (i = 0; i < argc; i++) {
         uiPrintf(state, "Checking for TZ version %s\n", tz_version[i]);
         if (strncmp(tz_version[i], current_tz_version, strlen(tz_version[i])) == 0) {
-            found_tz = true;
+            found_blacklisted_tz = true;
+            uiPrintf(state, "Found blacklisted TZ version, update your firmware\n",
+                tz_version[i]);
             break;
         }
     }
@@ -253,7 +257,7 @@ Value * VerifyTrustZoneFn(const char *name, State *state, int argc, Expr *argv[]
     }
     free(tz_version);
 
-    return StringValue(strdup(found_tz ? "0" : "1"));
+    return StringValue(strdup(found_blacklisted_tz ? "0" : "1"));
 }
 
 void Register_librecovery_updater_hiae() {
