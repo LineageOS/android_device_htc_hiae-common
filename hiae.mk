@@ -231,6 +231,7 @@ PRODUCT_PACKAGES += \
 # RIL
 PRODUCT_PACKAGES += \
     libcnefeatureconfig \
+    libhtcril_db \
     librmnetctl \
     libshim_ril
 
