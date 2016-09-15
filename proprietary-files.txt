@@ -495,6 +495,7 @@ vendor/lib64/libril-qc-qmi-1.so
 vendor/lib64/libril-qcril-hook-oem.so
 vendor/lib64/libsystem_health_mon.so
 vendor/lib64/libxml.so
+vendor/lib/libmdmdetect.so
 
 # Radio firmware
 vendor/firmware/mba.b00
@@ -536,6 +537,7 @@ vendor/bin/thermal-engine
 vendor/lib64/libthermalclient.so
 vendor/lib64/libthermalioctl.so
 vendor/lib/libthermalclient.so
+vendor/lib/libthermalioctl.so
 
 # Time services
 -app/TimeService/TimeService.apk
