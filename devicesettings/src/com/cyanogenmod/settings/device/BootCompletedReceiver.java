@@ -23,11 +23,21 @@ package com.cyanogenmod.settings.device;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
+import android.preference.PreferenceManager;
 
 public class BootCompletedReceiver extends BroadcastReceiver {
     @Override
     public void onReceive(Context context, Intent intent) {
         Intent serviceIntent = new Intent(context, HtcGestureService.class);
         context.startService(serviceIntent);
+
+        setFpHomeState(context);
+    }
+
+    private void setFpHomeState(Context context) {
+        SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(context);
+        boolean enabled = prefs.getBoolean(Constants.FP_HOME_KEY, false);
+        Utils.broadcastFpEnabled(context, enabled);
     }
 }
