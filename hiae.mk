@@ -96,6 +96,10 @@ PRODUCT_PACKAGES += \
     libshim_camera \
     Snap
 
+# Device Settings
+PRODUCT_PACKAGES += \
+    DeviceSettings
+
 # Display
 PRODUCT_PACKAGES += \
     copybit.msm8952 \
@@ -112,10 +116,6 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     fingerprintd \
     libshim_power
-
-# Gesture Handler
-PRODUCT_PACKAGES += \
-    GestureHandler
 
 # GPS
 PRODUCT_COPY_FILES += \
