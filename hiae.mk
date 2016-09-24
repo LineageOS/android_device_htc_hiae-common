@@ -96,6 +96,10 @@ PRODUCT_PACKAGES += \
     libshim_camera \
     Snap
 
+# Device Settings
+PRODUCT_PACKAGES += \
+    DeviceSettings
+
 # Display
 PRODUCT_PACKAGES += \
     copybit.msm8952 \
@@ -119,10 +123,6 @@ GAPPS_EXCLUDED_PACKAGES := EditorsDocs EditorsSheets EditorsSlides GoogleCamera 
 GAPPS_FORCE_PACKAGE_OVERRIDES := true
 GAPPS_FORCE_PIXEL_LAUNCHER := true
 $(call inherit-product,vendor/opengapps/build/opengapps-packages.mk)
-
-# Gesture Handler
-PRODUCT_PACKAGES += \
-    GestureHandler
 
 # GPS
 PRODUCT_COPY_FILES += \
