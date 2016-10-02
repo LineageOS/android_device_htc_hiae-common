@@ -292,11 +292,13 @@ service clockd /system/bin/clockd
 service cnd /system/bin/cnd
     class late_start
     socket cnd stream 660 root inet
+    writepid /dev/cpuset/system-background/tasks
 
 service fingerprintd /system/bin/fingerprintd
     class late_start
     user system
     group system input
+    writepid /dev/cpuset/system-background/tasks
 
 service hciattach /system/bin/sh /system/etc/init.qcom.bt.sh
     class late_start
@@ -325,6 +327,7 @@ service imscmservice /system/bin/imscmservice
     class main
     user system
     group radio net_raw qcom_diag log
+    writepid /dev/cpuset/system-background/tasks
     disabled
 
 on property:sys.ims.DATA_DAEMON_STATUS=1
@@ -335,6 +338,7 @@ service imsdatadaemon /system/bin/imsdatadaemon
     user system
     socket ims_datad stream 0660 system radio
     group system wifi radio inet net_raw log qcom_diag net_admin
+    writepid /dev/cpuset/system-background/tasks
     disabled
 
 on property:sys.ims.QMI_DAEMON_STATUS=1
@@ -345,17 +349,20 @@ service imsqmidaemon /system/bin/imsqmidaemon
     user system
     socket ims_qmid stream 0660 system radio
     group radio net_raw log qcom_diag
+    writepid /dev/cpuset/system-background/tasks
 
 service ipacm-diag /system/bin/ipacm-diag
     class main
     user system
     socket ipacm_log_file dgram 660 system net_admin
     group net_admin qcom_diag
+    writepid /dev/cpuset/system-background/tasks
 
 service ipacm /system/bin/ipacm
     class main
     user net_admin
     group net_admin inet
+    writepid /dev/cpuset/system-background/tasks
 
 service irsc_util /system/bin/irsc_util "/etc/sec_config"
     class main
@@ -370,11 +377,13 @@ service msm_irqbalance /system/bin/msm_irqbalance -f /system/vendor/etc/msm_irqb
 
 service netmgrd /system/bin/netmgrd
     class main
+    writepid /dev/cpuset/system-background/tasks
 
 service per_mgr /system/bin/pm-service
     class core
     user system
     group system net_raw
+    writepid /dev/cpuset/system-background/tasks
 
 service perfd /system/vendor/bin/perfd
     class main
@@ -399,26 +408,30 @@ service qcamerasvr /system/bin/mm-qcamera-daemon
     class main
     user camera
     group camera system inet input graphics
-    writepid /dev/cpuset/system-background/tasks
+    writepid /dev/cpuset/camera-daemon/tasks
 
 service qmuxd /system/bin/qmuxd
     class main
     user root
     group radio audio bluetooth gps qcom_diag
+    writepid /dev/cpuset/system-background/tasks
 
 service qseecomd /system/bin/qseecomd
     class core
     user root
     group root
+    writepid /dev/cpuset/system-background/tasks
 
 service qti /system/vendor/bin/qti
     class main
     user radio
     group radio net_raw qcom_diag usb net_admin
+    writepid /dev/cpuset/system-background/tasks
 
 service rmt_storage /system/bin/rmt_storage
     class core
     user root
+    writepid /dev/cpuset/system-background/tasks
 
 service thermal-engine /system/vendor/bin/thermal-engine
     class main
@@ -427,11 +440,13 @@ service thermal-engine /system/vendor/bin/thermal-engine
     socket thermal-recv-client stream 0660 system system
     socket thermal-recv-passive-client stream 0666 system system
     group root
+    writepid /dev/cpuset/system-background/tasks
 
 service time_daemon /system/bin/time_daemon
     class late_start
     user root
     group root
+    writepid /dev/cpuset/system-background/tasks
 
 service wcnss-service /system/bin/wcnss_service
     class late_start
