@@ -16,13 +16,11 @@
 
 package com.cyanogenmod.settings.device;
 
-import android.app.ActionBar;
 import android.os.Bundle;
 import android.preference.Preference;
 import android.preference.PreferenceActivity;
 import android.preference.SwitchPreference;
 import android.provider.Settings;
-import android.view.MenuItem;
 
 public class TouchscreenGestureSettings extends PreferenceActivity {
 
@@ -38,9 +36,6 @@ public class TouchscreenGestureSettings extends PreferenceActivity {
         mDoubleTapPreference = (SwitchPreference) findPreference(KEY_DOUBLE_TAP_ENABLE);
         mDoubleTapPreference.setChecked(isDoubleTapEnabled());
         mDoubleTapPreference.setOnPreferenceChangeListener(mDoubleTapPrefListener);
-
-        final ActionBar actionBar = getActionBar();
-        actionBar.setDisplayHomeAsUpEnabled(true);
     }
 
     @Override
@@ -48,15 +43,6 @@ public class TouchscreenGestureSettings extends PreferenceActivity {
         super.onResume();
 
         getListView().setPadding(0, 0, 0, 0);
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        if (item.getItemId() == android.R.id.home) {
-            onBackPressed();
-            return true;
-        }
-        return false;
     }
 
     private boolean enableDoubleTap(boolean enable) {
