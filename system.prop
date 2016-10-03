@@ -20,6 +20,7 @@ audio.ds1.metainfo.key=273
 dmid=-1286820014
 
 # Bluetooth
+qcom.bluetooth.soc=smd
 ro.bluetooth.dun=true
 ro.bluetooth.hfp.ver=1.7
 ro.bluetooth.sap=true
