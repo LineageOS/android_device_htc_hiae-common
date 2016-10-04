@@ -1,4 +1,5 @@
 # Audio
+audio_hal.period_size=192
 audio.offload.buffer.size.kb=1024
 audio.offload.multiple.enabled=false
 audio.offload.pcm.16bit.enable=true
