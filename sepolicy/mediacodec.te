@@ -1,1 +1,0 @@
-allow mediacodec media_msm8956hw_prop:file r_file_perms;
