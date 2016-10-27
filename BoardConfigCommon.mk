@@ -53,6 +53,7 @@ BOARD_KERNEL_PAGESIZE := 4096
 BOARD_KERNEL_SEPARATED_DT := true
 BOARD_MKBOOTIMG_ARGS := --kernel_offset 0x00008000 --ramdisk_offset 0x01f88000 --tags_offset 0x01d88000
 ENABLE_CPUSETS := true
+ENABLE_SCHEDBOOST := true
 TARGET_KERNEL_ARCH := arm64
 TARGET_KERNEL_SOURCE := kernel/htc/msm8952
 TARGET_KERNEL_CONFIG := cyanogenmod_hiae_defconfig
