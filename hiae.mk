@@ -94,6 +94,10 @@ PRODUCT_COPY_FILES += \
 PRODUCT_PACKAGES += \
     Gello
 
+# Camera
+PRODUCT_PACKAGES += \
+    libshim_camera
+
 # Display
 PRODUCT_PACKAGES += \
     copybit.msm8952 \
