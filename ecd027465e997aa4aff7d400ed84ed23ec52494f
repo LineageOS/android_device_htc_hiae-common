@@ -16,6 +16,41 @@
       "revId": "ecd027465e997aa4aff7d400ed84ed23ec52494f",
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ff2e2bb8_5dcaf719",
+        "filename": "hiae.mk",
+        "patchSetId": 4
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 2936
+      },
+      "writtenOn": "2016-10-29T00:06:45Z",
+      "side": 1,
+      "message": "https://android.googlesource.com/device/google/marlin/+/nougat-dr1-release/device-sailfish.mk#23 ?",
+      "parentUuid": "ff2e2bb8_3d50d35d",
+      "revId": "ecd027465e997aa4aff7d400ed84ed23ec52494f",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ff2e2bb8_7dc7fb13",
+        "filename": "hiae.mk",
+        "patchSetId": 4
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 2936
+      },
+      "writtenOn": "2016-10-29T00:06:45Z",
+      "side": 1,
+      "message": "Derp this newline isn\u0027t supposed to be either",
+      "revId": "ecd027465e997aa4aff7d400ed84ed23ec52494f",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
     }
   ]
 }
