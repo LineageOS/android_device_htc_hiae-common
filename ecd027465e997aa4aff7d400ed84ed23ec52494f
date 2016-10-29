@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ff2e2bb8_3d50d35d",
+        "filename": "hiae.mk",
+        "patchSetId": 4
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 7880
+      },
+      "writtenOn": "2016-10-29T00:04:43Z",
+      "side": 1,
+      "message": "Looking at the Pixels and the Nexus device trees, I think xxhdpi isn\u0027t supposed to be here",
+      "revId": "ecd027465e997aa4aff7d400ed84ed23ec52494f",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    }
+  ]
+}
