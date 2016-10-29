@@ -37,6 +37,24 @@
     },
     {
       "key": {
+        "uuid": "ff2e2bb8_63791892",
+        "filename": "hiae.mk",
+        "patchSetId": 4
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 7880
+      },
+      "writtenOn": "2016-10-29T15:28:58Z",
+      "side": 1,
+      "message": "Huh, angler and bullhead do it slightly differently: https://github.com/CyanogenMod/android_device_huawei_angler/blob/cm-14.1/device.mk#L164",
+      "parentUuid": "ff2e2bb8_5dcaf719",
+      "revId": "ecd027465e997aa4aff7d400ed84ed23ec52494f",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ff2e2bb8_7dc7fb13",
         "filename": "hiae.mk",
         "patchSetId": 4
