@@ -52,7 +52,7 @@ on enable-low-power
 
     write /sys/class/devfreq/qcom,mincpubw.53/governor "cpufreq"
     write /sys/class/devfreq/qcom,cpubw.52/governor "bw_hwmon"
-    write /sys/class/devfreq/qcom,cpubw.52/bw_hwmon/cpu_io_percent 20
+    write /sys/class/devfreq/qcom,cpubw.52/bw_hwmon/io_percent 20
     write /sys/class/devfreq/qcom,cpubw.52/bw_hwmon/guard_band_mbps 30
     write /sys/class/devfreq/qcom,gpubw.39/governor "bw_hwmon"
     write /sys/class/devfreq/qcom,gpubw.39/bw_hwmon/io_percent 40
