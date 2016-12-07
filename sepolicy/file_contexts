@@ -18,10 +18,6 @@
 # Gesture
 /sys/devices/virtual/htc_sensorhub/sensor_hub/gesture_motion    u:object_r:sysfs_gesture:s0
 
-# Perfd
-/data/misc/perfd(/.*)?                      u:object_r:mpctl_data_file:s0
-/data/misc/perfd/mpctl                      u:object_r:mpctl_socket:s0
-
 # Radio
 /dev/radio(/.*)?                            u:object_r:radio_data_file:s0
 /dev/block/bootdevice/by-name/rfg_[0-9]+     u:object_r:modem_efs_partition_device:s0
