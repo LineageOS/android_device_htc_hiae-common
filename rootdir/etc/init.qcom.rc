@@ -285,6 +285,9 @@ on boot
     chown system system /sys/devices/virtual/timed_output/vibrator/voltage_level
     chmod 0644 /sys/devices/virtual/timed_output/vibrator/voltage_level
 
+    # Wifi firmware reload path
+    chown wifi wifi /sys/module/wlan/parameters/fwpath
+
 # Services begin here
 
 service adsprpcd /system/vendor/bin/adsprpcd
