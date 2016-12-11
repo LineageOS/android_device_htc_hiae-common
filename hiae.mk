@@ -110,7 +110,7 @@ PRODUCT_PACKAGES += \
 
 # Dot View Case
 PRODUCT_PACKAGES += \
-    Dotcase
+    QuickCover
 
 # Fingerprint
 PRODUCT_PACKAGES += \
