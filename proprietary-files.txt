@@ -481,6 +481,8 @@ bin/qmuxd
 bin/radish
 bin/rmt_storage
 lib64/libhtc_rilhook.so
+-lib64/libril.so
+-lib/libril.so
 vendor/bin/qti
 vendor/lib64/libcneapiclient.so
 vendor/lib64/libconfigdb.so
