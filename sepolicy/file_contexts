@@ -4,6 +4,9 @@
 /dev/tfa9887                                u:object_r:audio_device:s0
 /dev/tfa9887l                               u:object_r:audio_device:s0
 
+# Carrier
+/carrier(/.*)?                              u:object_r:carrier_file:s0
+
 # Clock
 /dev/socket/clockd(/.*)?                    u:object_r:clockd_socket:s0
 /system/bin/clockd                          u:object_r:clockd_exec:s0
