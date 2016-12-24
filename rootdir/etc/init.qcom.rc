@@ -139,6 +139,9 @@ on post-fs-data
     # Create directory for TZ Apps
     mkdir /data/misc/qsee 0770 system system
 
+    chown radio radio /carrier
+    chown radio radio /carrier/htcril.db
+
     setprop vold.post_fs_data_done 1
 
 on early-boot
