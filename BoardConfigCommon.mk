@@ -138,6 +138,9 @@ TARGET_RECOVERY_FSTAB := $(COMMON_PATH)/rootdir/etc/fstab.qcom
 TARGET_RECOVERY_UPDATER_LIBS := librecovery_updater_hiae
 TARGET_RELEASETOOLS_EXTENSIONS := $(COMMON_PATH)
 
+# RIL
+TARGET_RIL_VARIANT := caf
+
 # SELinux
 include device/qcom/sepolicy/sepolicy.mk
 BOARD_SEPOLICY_DIRS += $(COMMON_PATH)/sepolicy
