@@ -38,7 +38,6 @@ ro.qualcomm.bt.hci_transport=smd
 camera.hal1.packagelist=com.skype.raider,com.google.android.talk
 camera.lowpower.record.enable=1
 persist.camera.HAL3.enabled=1
-media.stagefright.legacyencoder=true
 persist.camera.tuning_spec=htc
 
 # Display
