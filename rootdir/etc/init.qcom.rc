@@ -389,6 +389,14 @@ service netmgrd /system/bin/netmgrd
     class main
     writepid /dev/cpuset/system-background/tasks
 
+service op-prop /system/bin/operator-properties
+    class main
+    disabled
+    oneshot
+
+on property:gsm.sim.operator.numeric=*
+    start op-prop
+
 service per_mgr /system/bin/pm-service
     class late_start
     user system
