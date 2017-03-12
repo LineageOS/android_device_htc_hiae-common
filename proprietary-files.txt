@@ -416,6 +416,12 @@ vendor/lib/libmm-dspp-utils.so
 vendor/lib/libmm-qdcm-diag.so
 vendor/lib/libmm-qdcm.so
 
+# Properties
+customize/MNSprop/310160.prop
+customize/MNSprop/311180.prop
+customize/MNSprop/default.prop
+customize/mns_map.xml
+
 # Sensors
 lib64/hw/sensors.msm8952.so
 

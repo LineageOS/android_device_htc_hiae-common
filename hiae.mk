@@ -211,6 +211,10 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     power.msm8952
 
+# Properties
+PRODUCT_PACKAGES += \
+    operator-properties
+
 # QMI
 PRODUCT_PACKAGES += \
     dsi_config.xml \
