@@ -71,8 +71,5 @@ ro.telephony.call_ring.multiple=false
 ro.ril.oem.ecclist=911
 ro.ril.oem.nosim.ecclist=911
 
-# Storage
-ro.sys.sdcardfs=true
-
 # Wifi
 wifi.interface=wlan0
