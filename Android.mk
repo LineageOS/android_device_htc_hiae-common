@@ -65,7 +65,7 @@ $(MBA_SYMLINKS): $(LOCAL_INSTALLED_MODULE)
 	@echo "MBA firmware link: $@"
 	@mkdir -p $(dir $@)
 	@rm -rf $@
-	$(hide) ln -sf /vendor/firmware/$(notdir $@) $@
+	$(hide) ln -sf /firmware/radio/$(notdir $@) $@
 
 ALL_DEFAULT_INSTALLED_MODULES += $(MBA_SYMLINKS)
 
@@ -77,7 +77,7 @@ $(MISC_SYMLINKS): $(LOCAL_INSTALLED_MODULE)
 	@echo "Misc firmware link: $@"
 	@mkdir -p $(dir $@)
 	@rm -rf $@
-	$(hide) ln -sf /vendor/firmware/$(notdir $@) $@
+	$(hide) ln -sf /firmware/radio/$(notdir $@) $@
 
 ALL_DEFAULT_INSTALLED_MODULES += $(MISC_SYMLINKS)
 
@@ -92,7 +92,7 @@ $(MODEM_SYMLINKS): $(LOCAL_INSTALLED_MODULE)
 	@echo "Modem firmware link: $@"
 	@mkdir -p $(dir $@)
 	@rm -rf $@
-	$(hide) ln -sf /vendor/firmware/$(notdir $@) $@
+	$(hide) ln -sf /firmware/radio/$(notdir $@) $@
 
 ALL_DEFAULT_INSTALLED_MODULES += $(MODEM_SYMLINKS)
 
