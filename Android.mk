@@ -110,6 +110,29 @@ $(WCNSS_SYMLINKS): $(LOCAL_INSTALLED_MODULE)
 
 ALL_DEFAULT_INSTALLED_MODULES += $(WCNSS_SYMLINKS)
 
+RFS_ADSP_SYMLINKS := $(TARGET_OUT)/rfs/msm/adsp
+$(RFS_ADSP_SYMLINKS): $(LOCAL_INSTALLED_MODULE)
+	@mkdir -p $@/readonly
+	$(hide) ln -sf /firmware $@/readonly/firmware
+	$(hide) ln -sf /persist/hlos_rfs/shared $@/hlos
+	$(hide) ln -sf /data/tombstones/lpass $@/ramdumps
+	$(hide) ln -sf /persist/rfs/msm/adsp $@/readwrite
+	$(hide) ln -sf /persist/rfs/shared $@/shared
+
+ALL_DEFAULT_INSTALLED_MODULES += $(RFS_ADSP_SYMLINKS)
+
+RFS_MPSS_SYMLINKS := $(TARGET_OUT)/rfs/msm/mpss
+$(RFS_MPSS_SYMLINKS): $(LOCAL_INSTALLED_MODULE)
+	@mkdir -p $@/readonly
+	$(hide) ln -sf /firmware $@/readonly/firmware
+	$(hide) ln -sf /firmware/wsd $@/readonly/wsd
+	$(hide) ln -sf /persist/hlos_rfs/shared $@/hlos
+	$(hide) ln -sf /data/tombstones/modem $@/ramdumps
+	$(hide) ln -sf /persist/rfs/msm/mpss $@/readwrite
+	$(hide) ln -sf /persist/rfs/shared $@/shared
+
+ALL_DEFAULT_INSTALLED_MODULES += $(RFS_MPSS_SYMLINKS)
+
 # Create a link for the WCNSS config file, which ends up as a writable
 # # version in /data/misc/wifi
 $(shell mkdir -p $(TARGET_OUT)/etc/firmware/wlan/prima; \
