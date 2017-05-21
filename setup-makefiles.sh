@@ -33,7 +33,7 @@ fi
 setup_vendor "$DEVICE_COMMON" "$VENDOR" "$CM_ROOT" "true"
 
 # Copyright headers and guards
-write_headers "hiaeul hiaeuhl"
+write_headers "hiaeul hiaeuhl hiaewhl"
 
 # The standard common blobs
 write_makefiles "$MY_DIR"/proprietary-files.txt

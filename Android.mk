@@ -25,7 +25,7 @@
 
 LOCAL_PATH := $(call my-dir)
 
-ifneq ($(filter hiaeul hiaeuhl,$(TARGET_DEVICE)),)
+ifneq ($(filter hiaeul hiaeuhl hiaewhl,$(TARGET_DEVICE)),)
 
 include $(call all-makefiles-under,$(LOCAL_PATH))
 
