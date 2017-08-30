@@ -98,7 +98,7 @@ static int db_property_get_locked(const char *name, char *value_ret, const char 
         return -1;
     }
 
-    if (value_ret[0] == '\0') {
+    if (def_value != NULL && value_ret[0] == '\0') {
         strcpy(value_ret, def_value);
     }
 
