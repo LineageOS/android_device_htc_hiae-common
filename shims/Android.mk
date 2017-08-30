@@ -17,6 +17,16 @@ include $(BUILD_SHARED_LIBRARY)
 include $(CLEAR_VARS)
 
 LOCAL_SRC_FILES := \
+  power_shim.cpp
+
+LOCAL_MODULE := libshim_power
+LOCAL_MODULE_TAGS := optional
+
+include $(BUILD_SHARED_LIBRARY)
+
+include $(CLEAR_VARS)
+
+LOCAL_SRC_FILES := \
   ril_shim.cpp
 
 LOCAL_MODULE := libshim_ril
