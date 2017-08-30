@@ -110,7 +110,8 @@ PRODUCT_PACKAGES += \
 
 # Fingerprint
 PRODUCT_PACKAGES += \
-    fingerprintd
+    fingerprintd \
+    libshim_power
 
 # Gesture Handler
 PRODUCT_PACKAGES += \
