@@ -357,7 +357,6 @@ etc/firmware/keymaste.b01
 etc/firmware/keymaste.b02
 etc/firmware/keymaste.b03
 etc/firmware/keymaste.mdt
-lib64/libcryptm.so
 vendor/lib64/hw/keystore.msm8952.so
 
 # Media
