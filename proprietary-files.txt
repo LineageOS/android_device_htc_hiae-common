@@ -263,9 +263,6 @@ etc/hltrd.bin
 vendor/lib/libmmcamera_imx214_htc.so
 vendor/lib/libmmcamera_ov4688_htc.so
 
-# Clock daemon
-bin/clockd
-
 # DRM
 bin/qseecomd
 vendor/lib64/libdrmfs.so
