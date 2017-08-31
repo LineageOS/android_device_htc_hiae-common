@@ -65,6 +65,7 @@ lib/libawb_calibration.so
 lib/libBeautyChat.so
 lib/libcameraface.so
 lib/libcamerapp.so
+lib/libhtc_facebeauty.so
 lib/libmmcamera_interface.so
 lib/libmmjpeg_interface.so
 lib/libmm-qcamera.so
