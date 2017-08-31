@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "064117bf_fe3cc5ac",
+        "filename": "camera/CameraParameters_EXT.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 159,
+      "author": {
+        "id": 2936
+      },
+      "writtenOn": "2017-08-31T06:11:02Z",
+      "side": 1,
+      "message": "Should probably be a separate commit.",
+      "range": {
+        "startLine": 157,
+        "startChar": 4,
+        "endLine": 159,
+        "endChar": 13
+      },
+      "revId": "4606d6bf278a81a84ab6aa6b975286b848b7eb4d",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    }
+  ]
+}
