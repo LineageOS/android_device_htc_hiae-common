@@ -411,6 +411,13 @@
     <ctl name="VOICEMMODE1_EXT_EC MUX" value="NONE" />
     <ctl name="VOICEMMODE2_EXT_EC MUX" value="NONE" />
     <!-- htc added ctrl end -->
+    <ctl name="HFP_AUX_UL_HL Switch" value="0" />
+    <ctl name="SLIMBUS_0_RX Port Mixer SEC_AUX_PCM_UL_TX" value="0" />
+    <ctl name="SEC_AUX_PCM_RX Audio Mixer MultiMedia6" value="0" />
+    <ctl name="MultiMedia8 Mixer INTERNAL_BT_SCO_TX" value="0" />
+    <ctl name="RDAC7 MUX" value="DEM6" />
+    <ctl name="RDAC5 MUX" value="DEM4" />
+    <ctl name="RX8 MIX1 INP1" value="ZERO" />
 
     <!-- These are audio route (FE to BE) specific mixer settings -->
 <!-- htc added route start -->
@@ -2071,10 +2078,10 @@
 
     <path name="headphones">
         <path name="headphones-generic" />
-        <ctl name="RX3 Digital Volume" value="83" />
-        <ctl name="RX4 Digital Volume" value="83" />
-        <ctl name="RX5 Digital Volume" value="83" />
-        <ctl name="RX6 Digital Volume" value="83" />
+        <ctl name="RX3 Digital Volume" value="84" />
+        <ctl name="RX4 Digital Volume" value="84" />
+        <ctl name="RX5 Digital Volume" value="84" />
+        <ctl name="RX6 Digital Volume" value="84" />
         <ctl name="LINEOUT1 Volume" value="16" />
         <ctl name="LINEOUT2 Volume" value="16" />
         <ctl name="LINEOUT3 Volume" value="16" />
