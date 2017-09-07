@@ -17,22 +17,21 @@
 #define LOG_TAG "tfa9887"
 //#define LOG_NDEBUG 0
 
+#include "tfa9887.h"
+
+#include <linux/tfa9895.h>
+
+#include <cutils/log.h>
+#include <tinyalsa/asoundlib.h>
+
 #include <errno.h>
 #include <fcntl.h>
 #include <math.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-#include <unistd.h>
-
 #include <sys/ioctl.h>
-
-#include <cutils/log.h>
-
-#include <system/audio.h>
-#include <tinyalsa/asoundlib.h>
-
-#include "tfa9887.h"
+#include <unistd.h>
 
 #define UNUSED __attribute__((unused))
 

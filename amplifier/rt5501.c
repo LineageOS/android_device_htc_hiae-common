@@ -17,15 +17,16 @@
 #define LOG_TAG "rt5501"
 //#define LOG_NDEBUG 0
 
+#include "rt5501.h"
+
+#include <linux/rt5506.h>
+
+#include <cutils/log.h>
+
 #include <errno.h>
 #include <fcntl.h>
 #include <stdio.h>
 #include <sys/ioctl.h>
-
-#include <cutils/log.h>
-#include <system/audio.h>
-
-#include "rt5501.h"
 
 static struct rt55xx_config rt55xx_playback_config = {
     .reg_len = 8,

@@ -14,36 +14,13 @@
  * limitations under the License.
  */
 
-#ifndef _TFA9887_H_
-#define _TFA9887_H_
+#pragma once
 
+#include <system/audio.h>
+
+#include <pthread.h>
+#include <stdbool.h>
 #include <stdint.h>
-
-/* ------------------------------------------------------------------------- */
-/* From tfa9895.h kernel header */
-#define TFA9895_IOCTL_MAGIC 'a'
-#define TFA9895_WRITE_CONFIG_NR     0x01
-#define TFA9895_READ_CONFIG_NR      0x02
-#define TFA9895_ENABLE_DSP_NR       0x03
-#define TFA9895_WRITE_L_CONFIG_NR   0x04
-#define TFA9895_READ_L_CONFIG_NR    0x05
-#define TFA9895_KERNEL_LOCK_NR      0x06
-
-#define TFA9895_WRITE_CONFIG(size)   _IOW(TFA9895_IOCTL_MAGIC, TFA9895_WRITE_CONFIG_NR, (size))
-#define TFA9895_READ_CONFIG(size)    _IOWR(TFA9895_IOCTL_MAGIC, TFA9895_READ_CONFIG_NR, (size))
-#define TFA9895_ENABLE_DSP(size)     _IOW(TFA9895_IOCTL_MAGIC, TFA9895_ENABLE_DSP_NR, (size))
-#define TFA9895_WRITE_L_CONFIG(size) _IOW(TFA9895_IOCTL_MAGIC, TFA9895_WRITE_L_CONFIG_NR , (size))
-#define TFA9895_READ_L_CONFIG(size)  _IOWR(TFA9895_IOCTL_MAGIC, TFA9895_READ_L_CONFIG_NR, (size))
-#define TFA9895_KERNEL_LOCK(size)    _IOW(TFA9895_IOCTL_MAGIC, TFA9895_KERNEL_LOCK_NR, (size))
-
-#define I2C_BUFFER_SIZE 255
-
-struct tfa9895_i2c_buffer {
-    int size;
-    uint8_t buffer[I2C_BUFFER_SIZE];
-};
-
-/* ------------------------------------------------------------------------- */
 
 #define TFA9887_DEVICE "/dev/tfa9887"
 
@@ -249,5 +226,3 @@ int tfa9887_power(bool on);
 int tfa9887_set_mode(audio_mode_t mode);
 int tfa9887_set_mute(bool on);
 int tfa9887_close(void);
-
-#endif
