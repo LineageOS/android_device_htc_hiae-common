@@ -32,17 +32,17 @@
 
 #define UNUSED __attribute__((unused))
 
-typedef struct a9_device {
+typedef struct amp_device {
     amplifier_device_t amp_dev;
     audio_mode_t current_mode;
-} a9_device_t;
+} amp_device_t;
 
-static a9_device_t *a9_dev = NULL;
+static amp_device_t *amp_dev = NULL;
 
 static int amp_set_mode(amplifier_device_t *device, audio_mode_t mode)
 {
     int ret = 0;
-    a9_device_t *dev = (a9_device_t *) device;
+    amp_device_t *dev = (amp_device_t *) device;
 
     dev->current_mode = mode;
 
@@ -51,7 +51,7 @@ static int amp_set_mode(amplifier_device_t *device, audio_mode_t mode)
 
 static int amp_set_output_devices(amplifier_device_t *device, uint32_t devices)
 {
-    a9_device_t *dev = (a9_device_t *) device;
+    amp_device_t *dev = (amp_device_t *) device;
 
     switch (devices) {
         case SND_DEVICE_OUT_HEADPHONES:
@@ -68,7 +68,7 @@ static int amp_set_output_devices(amplifier_device_t *device, uint32_t devices)
 static int amp_enable_output_devices(amplifier_device_t *device,
         uint32_t devices, bool enable)
 {
-    a9_device_t *dev = (a9_device_t *) device;
+    amp_device_t *dev = (amp_device_t *) device;
 
     switch (devices) {
         case SND_DEVICE_OUT_SPEAKER:
@@ -89,7 +89,7 @@ static int amp_enable_output_devices(amplifier_device_t *device,
 
 static int amp_dev_close(hw_device_t *device)
 {
-    a9_device_t *dev = (a9_device_t *) device;
+    amp_device_t *dev = (amp_device_t *) device;
 
     tfa_power(false);
     tfa_close();
@@ -102,37 +102,37 @@ static int amp_dev_close(hw_device_t *device)
 static int amp_module_open(const hw_module_t *module, UNUSED const char *name,
         hw_device_t **device)
 {
-    if (a9_dev) {
+    if (amp_dev) {
         ALOGE("%s:%d: Unable to open second instance of TFA9887 amplifier\n",
                 __func__, __LINE__);
         return -EBUSY;
     }
 
-    a9_dev = calloc(1, sizeof(a9_device_t));
-    if (!a9_dev) {
+    amp_dev = calloc(1, sizeof(amp_device_t));
+    if (!amp_dev) {
         ALOGE("%s:%d: Unable to allocate memory for amplifier device\n",
                 __func__, __LINE__);
         return -ENOMEM;
     }
 
-    a9_dev->amp_dev.common.tag = HARDWARE_DEVICE_TAG;
-    a9_dev->amp_dev.common.module = (hw_module_t *) module;
-    a9_dev->amp_dev.common.version = HARDWARE_DEVICE_API_VERSION(1, 0);
-    a9_dev->amp_dev.common.close = amp_dev_close;
+    amp_dev->amp_dev.common.tag = HARDWARE_DEVICE_TAG;
+    amp_dev->amp_dev.common.module = (hw_module_t *) module;
+    amp_dev->amp_dev.common.version = HARDWARE_DEVICE_API_VERSION(1, 0);
+    amp_dev->amp_dev.common.close = amp_dev_close;
 
-    a9_dev->amp_dev.set_input_devices = NULL;
-    a9_dev->amp_dev.set_output_devices = amp_set_output_devices;
-    a9_dev->amp_dev.enable_input_devices = NULL;
-    a9_dev->amp_dev.enable_output_devices = amp_enable_output_devices;
-    a9_dev->amp_dev.set_mode = amp_set_mode;
-    a9_dev->amp_dev.output_stream_start = NULL;
-    a9_dev->amp_dev.input_stream_start = NULL;
-    a9_dev->amp_dev.output_stream_standby = NULL;
-    a9_dev->amp_dev.input_stream_standby = NULL;
+    amp_dev->amp_dev.set_input_devices = NULL;
+    amp_dev->amp_dev.set_output_devices = amp_set_output_devices;
+    amp_dev->amp_dev.enable_input_devices = NULL;
+    amp_dev->amp_dev.enable_output_devices = amp_enable_output_devices;
+    amp_dev->amp_dev.set_mode = amp_set_mode;
+    amp_dev->amp_dev.output_stream_start = NULL;
+    amp_dev->amp_dev.input_stream_start = NULL;
+    amp_dev->amp_dev.output_stream_standby = NULL;
+    amp_dev->amp_dev.input_stream_standby = NULL;
 
-    a9_dev->current_mode = AUDIO_MODE_NORMAL;
+    amp_dev->current_mode = AUDIO_MODE_NORMAL;
 
-    *device = (hw_device_t *) a9_dev;
+    *device = (hw_device_t *) amp_dev;
 
     tfa_open();
     rt55xx_open();
@@ -150,7 +150,7 @@ amplifier_module_t HAL_MODULE_INFO_SYM = {
         .module_api_version = AMPLIFIER_MODULE_API_VERSION_0_1,
         .hal_api_version = HARDWARE_HAL_API_VERSION,
         .id = AMPLIFIER_HARDWARE_MODULE_ID,
-        .name = "M9 audio amplifier HAL",
+        .name = "A9 audio amplifier HAL",
         .author = "The CyanogenMod Open Source Project",
         .methods = &hal_module_methods,
     },
