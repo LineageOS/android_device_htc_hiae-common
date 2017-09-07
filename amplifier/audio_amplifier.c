@@ -34,6 +34,7 @@
 
 typedef struct amp_device {
     amplifier_device_t amp_dev;
+    struct tfa_t *tfa;
     audio_mode_t current_mode;
 } amp_device_t;
 
@@ -75,11 +76,11 @@ static int amp_enable_output_devices(amplifier_device_t *device,
         case SND_DEVICE_OUT_SPEAKER_AND_HEADPHONES:
         case SND_DEVICE_OUT_VOICE_SPEAKER:
         case SND_DEVICE_OUT_VOIP_SPEAKER:
-            tfa_power(enable);
+            tfa_power(dev->tfa, enable);
             if (enable) {
                 /* FIXME: This may fail because I2S is not active */
-                tfa_set_mute(false);
-                tfa_set_mode(dev->current_mode);
+                tfa_set_mute(dev->tfa, false);
+                tfa_set_mode(dev->tfa, dev->current_mode);
             }
             break;
     }
@@ -91,8 +92,8 @@ static int amp_dev_close(hw_device_t *device)
 {
     amp_device_t *dev = (amp_device_t *) device;
 
-    tfa_power(false);
-    tfa_close();
+    tfa_power(dev->tfa, false);
+    tfa_destroy(dev->tfa);
 
     free(dev);
 
@@ -102,10 +103,19 @@ static int amp_dev_close(hw_device_t *device)
 static int amp_module_open(const hw_module_t *module, UNUSED const char *name,
         hw_device_t **device)
 {
+    struct tfa_t *tfa;
+
     if (amp_dev) {
         ALOGE("%s:%d: Unable to open second instance of TFA9887 amplifier\n",
                 __func__, __LINE__);
         return -EBUSY;
+    }
+
+    tfa = tfa_new();
+    if (!tfa) {
+        ALOGE("%s:%d: Unable to construct TFA module\n",
+                __func__, __LINE__);
+        return -ENOENT;
     }
 
     amp_dev = calloc(1, sizeof(amp_device_t));
@@ -132,10 +142,13 @@ static int amp_module_open(const hw_module_t *module, UNUSED const char *name,
 
     amp_dev->current_mode = AUDIO_MODE_NORMAL;
 
-    *device = (hw_device_t *) amp_dev;
+    amp_dev->tfa = tfa;
 
-    tfa_open();
     rt55xx_open();
+
+    tfa_init(tfa);
+
+    *device = (hw_device_t *) amp_dev;
 
     return 0;
 }

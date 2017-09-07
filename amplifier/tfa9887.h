@@ -221,8 +221,9 @@ struct tfa_t {
 
 #define I2S_MIXER_CTL "QUIN_MI2S_RX Audio Mixer MultiMedia1"
 
-int tfa_open(void);
-int tfa_power(bool on);
-int tfa_set_mode(audio_mode_t mode);
-int tfa_set_mute(bool on);
-int tfa_close(void);
+struct tfa_t * tfa_new(void);
+int tfa_init(struct tfa_t *amp);
+int tfa_power(struct tfa_t *amp, bool on);
+int tfa_set_mode(struct tfa_t *amp, audio_mode_t mode);
+int tfa_set_mute(struct tfa_t *amp, bool on);
+void tfa_destroy(struct tfa_t *amp);

@@ -55,8 +55,6 @@ const struct mode_config_t mode_configs[TFA9887_MODE_MAX] = {
     }
 };
 
-static struct tfa_amp_t *main_amp = NULL;
-
 /* Helper functions */
 
 static int i2s_interface_en(bool enable)
@@ -1771,15 +1769,18 @@ static int tfa9887_enable_dsp(struct tfa_t *amp, bool enable)
     return rc;
 }
 
-static int tfa9887_init(struct tfa_t *amp)
+/* Public functions */
+
+struct tfa_t * tfa_new(void)
 {
-    int rc;
+    struct tfa_t *amp;
 
+    amp = calloc(1, sizeof(struct tfa_t));
     if (!amp) {
-        return -ENODEV;
+        ALOGE("%s:%d: Failed to allocate TFA9887 amplifier device memory",
+                __func__, __LINE__);
+        return NULL;
     }
-
-    memset(amp, 0, sizeof(struct tfa_t));
 
     amp->mode = TFA9887_MODE_PLAYBACK;
     amp->initializing = true;
@@ -1789,41 +1790,20 @@ static int tfa9887_init(struct tfa_t *amp)
 
     amp->fd = open(TFA9887_DEVICE, O_RDWR);
     if (amp->fd < 0) {
-        rc = -errno;
-        ALOGE("%s: Failed to open amplifier device: %d\n", __func__, rc);
-        return rc;
+        ALOGE("%s:%d: Failed to open amplifier device: %d\n",
+                __func__, __LINE__, -errno);
+        free(amp);
+        return NULL;
     }
 
-    return 0;
+    return amp;
 }
 
-/* Public functions */
-
-int tfa_open(void)
+/* TODO: split into a clocks on/off function */
+int tfa_init(struct tfa_t *amp)
 {
     int rc = 0;
     uint16_t value = 0;
-    struct tfa_amp_t *amp = NULL;
-
-    if (main_amp) {
-        ALOGE("%s: TFA9887 already opened\n", __func__);
-        rc = -EBUSY;
-        goto open_err;
-    }
-
-    main_amp = calloc(1, sizeof(struct tfa_amp_t));
-    if (!main_amp) {
-        ALOGE("%s: Failed to allocate TFA9887 amplifier device memory", __func__);
-        rc = -ENOMEM;
-        goto open_err;
-    }
-
-    amp = main_amp;
-    rc = tfa9887_init(amp);
-    if (rc) {
-        /* Try next amp */
-        goto open_err;
-    }
 
     rc = tfa9887_enable_dsp(amp, false);
     if (rc) {
@@ -1903,16 +1883,10 @@ open_err:
     return rc;
 }
 
-int tfa_power(bool on)
+int tfa_power(struct tfa_t *amp, bool on)
 {
     int rc;
-    struct tfa_amp_t *amp = NULL;
 
-    if (!main_amp) {
-        ALOGE("%s: TFA9887 not open!\n", __func__);
-    }
-
-    amp = main_amp;
     rc = tfa9887_hw_power(amp, on);
     if (rc) {
         ALOGE("Unable to power on amp: %d\n", rc);
@@ -1923,20 +1897,13 @@ int tfa_power(bool on)
     return 0;
 }
 
-int tfa_set_mode(audio_mode_t mode)
+int tfa_set_mode(struct tfa_t *amp, audio_mode_t mode)
 {
     int rc;
     uint32_t dsp_mode;
-    struct tfa_amp_t *amp = NULL;
-
-    if (!main_amp) {
-        ALOGE("%s: TFA9887 not opened\n", __func__);
-        return -ENODEV;
-    }
 
     dsp_mode = get_mode(mode);
 
-    amp = main_amp;
     if (dsp_mode == amp->mode) {
         ALOGV("No mode change needed, already mode %d", dsp_mode);
         return 0;
@@ -1960,17 +1927,10 @@ int tfa_set_mode(audio_mode_t mode)
     return 0;
 }
 
-int tfa_set_mute(bool on)
+int tfa_set_mute(struct tfa_t *amp, bool on)
 {
     int rc;
-    struct tfa_amp_t *amp = NULL;
 
-    if (!main_amp) {
-        ALOGE("%s: TFA9887 not open!\n", __func__);
-        return -ENODEV;
-    }
-
-    amp = main_amp;
     rc = tfa9887_mute(amp, on ? TFA9887_MUTE_DIGITAL : TFA9887_MUTE_OFF);
     if (rc) {
         ALOGE("Unable to mute: %d\n", rc);
@@ -1981,19 +1941,9 @@ int tfa_set_mute(bool on)
     return 0;
 }
 
-int tfa_close(void)
+void tfa_destroy(struct tfa_t *amp)
 {
-    struct tfa_amp_t *amp = NULL;
-
-    if (!main_amp) {
-        ALOGE("%s: TFA9887 not open!\n", __func__);
-    }
-
-    amp = main_amp;
     tfa9887_hw_power(amp, false);
     close(amp->fd);
-
-    free(main_amp);
-
-    return 0;
+    free(amp);
 }
