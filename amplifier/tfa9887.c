@@ -55,7 +55,7 @@ const struct mode_config_t mode_configs[TFA9887_MODE_MAX] = {
     }
 };
 
-static struct tfa9887_amp_t *main_amp = NULL;
+static struct tfa_amp_t *main_amp = NULL;
 
 /* Helper functions */
 
@@ -91,7 +91,7 @@ static int i2s_interface_en(bool enable)
 
 void * write_dummy_data(void *param)
 {
-    struct tfa9887_amp_t *amp = (struct tfa9887_amp_t *) param;
+    struct tfa_t *amp = (struct tfa_t *) param;
     uint8_t *buffer;
     int size;
     struct pcm *pcm;
@@ -222,7 +222,7 @@ static void data2bytes(const int32_t data[], int num_data, uint8_t bytes[])
 
 /* TFA9887 helper functions */
 
-static int tfa9887_read_reg(struct tfa9887_amp_t *amp, uint8_t reg,
+static int tfa9887_read_reg(struct tfa_t *amp, uint8_t reg,
         uint16_t *val)
 {
     int ret = 0;
@@ -259,7 +259,7 @@ read_reg_err:
     return ret;
 }
 
-static int tfa9887_write_reg(struct tfa9887_amp_t *amp, uint8_t reg,
+static int tfa9887_write_reg(struct tfa_t *amp, uint8_t reg,
         uint16_t val)
 {
     int ret = 0;
@@ -285,7 +285,7 @@ write_reg_err:
     return ret;
 }
 
-static int tfa9887_read(struct tfa9887_amp_t *amp, int addr, uint8_t *buf,
+static int tfa9887_read(struct tfa_t *amp, int addr, uint8_t *buf,
         int len, int alignment)
 {
     int rc = 0;
@@ -323,7 +323,7 @@ read_err:
     return rc;
 }
 
-static int tfa9887_write(struct tfa9887_amp_t *amp, int addr,
+static int tfa9887_write(struct tfa_t *amp, int addr,
         const uint8_t *buf, int len, int alignment)
 {
     int rc = 0;
@@ -355,7 +355,7 @@ write_err:
     return rc;
 }
 
-static int tfa9887_read_mem(struct tfa9887_amp_t *amp, uint16_t start_offset,
+static int tfa9887_read_mem(struct tfa_t *amp, uint16_t start_offset,
         int num_words, uint32_t *p_values)
 {
     int rc = 0;
@@ -397,7 +397,7 @@ read_mem_err:
     return rc;
 }
 
-static int tfa9887_write_mem(struct tfa9887_amp_t *amp, uint16_t address,
+static int tfa9887_write_mem(struct tfa_t *amp, uint16_t address,
         int size, uint8_t *buf)
 {
     int rc = 0;
@@ -436,7 +436,7 @@ write_mem_err:
     return rc;
 }
 
-static int tfa9887_wait_reg(struct tfa9887_amp_t *amp, uint16_t reg,
+static int tfa9887_wait_reg(struct tfa_t *amp, uint16_t reg,
         uint16_t ready_value, bool value_set, int max_tries, int interval)
 {
     int rc = 0;
@@ -469,7 +469,7 @@ wait_reg_err:
     return rc;
 }
 
-static int tfa9887_check_rpc_status(struct tfa9887_amp_t *amp)
+static int tfa9887_check_rpc_status(struct tfa_t *amp)
 {
     int rc = 0;
     int tries = 0;
@@ -509,7 +509,7 @@ check_rpc_err:
     return rc;
 }
 
-static int tfa9887_get_data(struct tfa9887_amp_t *amp, uint8_t module,
+static int tfa9887_get_data(struct tfa_t *amp, uint8_t module,
         uint8_t param, uint8_t *data, int length)
 {
     int rc;
@@ -581,7 +581,7 @@ get_data_err:
     return rc;
 }
 
-static int tfa9887_set_data(struct tfa9887_amp_t *amp, uint8_t module,
+static int tfa9887_set_data(struct tfa_t *amp, uint8_t module,
         uint8_t param, uint8_t *data, int length)
 {
     int rc;
@@ -649,7 +649,7 @@ set_data_err:
 
 /* Hardware functions */
 
-static int tfa9887_load_patch(struct tfa9887_amp_t *amp, uint8_t *bytes, int length)
+static int tfa9887_load_patch(struct tfa_t *amp, uint8_t *bytes, int length)
 {
     int rc;
     int size;
@@ -693,7 +693,7 @@ static int tfa9887_load_patch(struct tfa9887_amp_t *amp, uint8_t *bytes, int len
     return 0;
 }
 
-static int tfa9887_load_dsp(struct tfa9887_amp_t *amp, const char *param_file)
+static int tfa9887_load_dsp(struct tfa_t *amp, const char *param_file)
 {
     int param_id, module_id;
     uint8_t data[MAX_PARAM_SIZE];
@@ -731,7 +731,7 @@ static int tfa9887_load_dsp(struct tfa9887_amp_t *amp, const char *param_file)
     return tfa9887_set_data(amp, module_id, param_id, data, num_bytes);
 }
 
-static int tfa9887_load_eq(struct tfa9887_amp_t *amp, const char *eq_file)
+static int tfa9887_load_eq(struct tfa_t *amp, const char *eq_file)
 {
     uint8_t data[MAX_EQ_SIZE];
     const float disabled[5] = { 1.0, 0.0, 0.0, 0.0, 0.0 };
@@ -807,7 +807,7 @@ static int tfa9887_load_eq(struct tfa9887_amp_t *amp, const char *eq_file)
             MAX_EQ_SIZE);
 }
 
-static int tfa9887_hw_power(struct tfa9887_amp_t *amp, bool on)
+static int tfa9887_hw_power(struct tfa_t *amp, bool on)
 {
     int error;
     uint16_t value;
@@ -837,7 +837,7 @@ power_err:
     return error;
 }
 
-static int tfa9887_dsp_reset(struct tfa9887_amp_t *amp, bool reset)
+static int tfa9887_dsp_reset(struct tfa_t *amp, bool reset)
 {
     int rc = 0;
     uint16_t value;
@@ -862,7 +862,7 @@ dsp_reset_err:
 }
 
 #ifdef WITH_SET_VOLUME
-static int tfa9887_set_volume(struct tfa9887_amp_t *amp, float volume)
+static int tfa9887_set_volume(struct tfa_t *amp, float volume)
 {
     int error;
     uint16_t value;
@@ -897,7 +897,7 @@ set_vol_err:
 }
 #endif
 
-static int tfa9887_mute(struct tfa9887_amp_t *amp, uint32_t mute)
+static int tfa9887_mute(struct tfa_t *amp, uint32_t mute)
 {
     int error;
     uint16_t aud_value, sys_value;
@@ -950,7 +950,7 @@ mute_err:
     return error;
 }
 
-static int tfa9887_select_input(struct tfa9887_amp_t *amp, int input)
+static int tfa9887_select_input(struct tfa_t *amp, int input)
 {
     int error;
     uint16_t value;
@@ -986,7 +986,7 @@ select_amp_err:
     return error;
 }
 
-static int tfa9887_select_channel(struct tfa9887_amp_t *amp, int channels)
+static int tfa9887_select_channel(struct tfa_t *amp, int channels)
 {
     int error;
     uint16_t value;
@@ -1030,7 +1030,7 @@ select_channel_err:
     return error;
 }
 
-static int tfa9887_set_sample_rate(struct tfa9887_amp_t *amp, int sample_rate)
+static int tfa9887_set_sample_rate(struct tfa_t *amp, int sample_rate)
 {
     int error;
     uint16_t value;
@@ -1082,7 +1082,7 @@ static int tfa9887_set_sample_rate(struct tfa9887_amp_t *amp, int sample_rate)
     return error;
 }
 
-static int tfa9887_set_configured(struct tfa9887_amp_t *amp)
+static int tfa9887_set_configured(struct tfa_t *amp)
 {
     int error;
     uint16_t value;
@@ -1106,7 +1106,7 @@ set_conf_err:
     return error;
 }
 
-static int tfa9887_startup(struct tfa9887_amp_t *amp)
+static int tfa9887_startup(struct tfa_t *amp)
 {
     int rc;
     uint16_t value;
@@ -1185,7 +1185,7 @@ startup_err:
     return rc;
 }
 
-static int tfa9887_force_coldboot(struct tfa9887_amp_t *amp)
+static int tfa9887_force_coldboot(struct tfa_t *amp)
 {
     int rc = 0;
     int tries = 0;
@@ -1230,7 +1230,7 @@ coldboot_err:
 }
 
 #ifdef WITH_OTC
-static int tfa9887_otc(struct tfa9887_amp_t *amp)
+static int tfa9887_otc(struct tfa_t *amp)
 {
     int rc = 0;
     uint16_t value;
@@ -1263,7 +1263,7 @@ otc_err:
 #endif
 
 #if defined(WITH_RESET_CALIBRATION) || defined(WITH_MFG_RESET_CALIBRATION)
-static int tfa9887_reset_calibration(struct tfa9887_amp_t *amp)
+static int tfa9887_reset_calibration(struct tfa_t *amp)
 {
     int rc = 0;
     uint16_t value;
@@ -1300,7 +1300,7 @@ reset_cal_err:
 }
 #endif
 
-static int tfa9887_get_calibration_impedance(struct tfa9887_amp_t *amp,
+static int tfa9887_get_calibration_impedance(struct tfa_t *amp,
         float *re_25c)
 {
     int rc = 0;
@@ -1335,7 +1335,7 @@ get_cal_imp_err:
     return rc;
 }
 
-static int tfa9887_set_calibration_impedance(struct tfa9887_amp_t *amp,
+static int tfa9887_set_calibration_impedance(struct tfa_t *amp,
         float impedance)
 {
     int rc = 0;
@@ -1368,7 +1368,7 @@ set_cal_imp_err:
     return rc;
 }
 
-static int tfa9887_reset_agc(struct tfa9887_amp_t *amp)
+static int tfa9887_reset_agc(struct tfa_t *amp)
 {
     uint8_t data[3];
     int32_t agc = 0;
@@ -1378,7 +1378,7 @@ static int tfa9887_reset_agc(struct tfa9887_amp_t *amp)
             data, 3);
 }
 
-static int tfa9887_hw_init(struct tfa9887_amp_t *amp, int sample_rate)
+static int tfa9887_hw_init(struct tfa_t *amp, int sample_rate)
 {
     int rc = 0;
     uint8_t patch_buf[MAX_PATCH_SIZE];
@@ -1486,7 +1486,7 @@ priv_init_err:
     return rc;
 }
 
-static int tfa9887_htc_init(struct tfa9887_amp_t *amp)
+static int tfa9887_htc_init(struct tfa_t *amp)
 {
     int rc = 0;
     uint16_t value;
@@ -1532,7 +1532,7 @@ htc_init_err:
     return rc;
 }
 
-static int tfa9887_set_dsp_mode(struct tfa9887_amp_t *amp, uint32_t mode)
+static int tfa9887_set_dsp_mode(struct tfa_t *amp, uint32_t mode)
 {
     int error;
     uint8_t buf[3];
@@ -1579,7 +1579,7 @@ set_dsp_err:
     return error;
 }
 
-static int tfa9887_wait_for_calibration(struct tfa9887_amp_t *amp,
+static int tfa9887_wait_for_calibration(struct tfa_t *amp,
         uint32_t *cal_value)
 {
     int rc;
@@ -1635,7 +1635,7 @@ wait_cal_err:
     return rc;
 }
 
-static int tfa9887_recalibrate(struct tfa9887_amp_t *amp)
+static int tfa9887_recalibrate(struct tfa_t *amp)
 {
     int rc = 0;
     uint16_t value = 0;
@@ -1721,7 +1721,7 @@ recalibrate_done:
     return rc;
 }
 
-static int tfa9887_lock(struct tfa9887_amp_t *amp, bool lock)
+static int tfa9887_lock(struct tfa_t *amp, bool lock)
 {
     int rc;
     int cmd = lock ? 1 : 0;
@@ -1745,7 +1745,7 @@ static int tfa9887_lock(struct tfa9887_amp_t *amp, bool lock)
     return rc;
 }
 
-static int tfa9887_enable_dsp(struct tfa9887_amp_t *amp, bool enable)
+static int tfa9887_enable_dsp(struct tfa_t *amp, bool enable)
 {
     int rc;
     int cmd = enable ? 1 : 0;
@@ -1771,7 +1771,7 @@ static int tfa9887_enable_dsp(struct tfa9887_amp_t *amp, bool enable)
     return rc;
 }
 
-static int tfa9887_init(struct tfa9887_amp_t *amp)
+static int tfa9887_init(struct tfa_t *amp)
 {
     int rc;
 
@@ -1779,7 +1779,7 @@ static int tfa9887_init(struct tfa9887_amp_t *amp)
         return -ENODEV;
     }
 
-    memset(amp, 0, sizeof(struct tfa9887_amp_t));
+    memset(amp, 0, sizeof(struct tfa_t));
 
     amp->mode = TFA9887_MODE_PLAYBACK;
     amp->initializing = true;
@@ -1799,11 +1799,11 @@ static int tfa9887_init(struct tfa9887_amp_t *amp)
 
 /* Public functions */
 
-int tfa9887_open(void)
+int tfa_open(void)
 {
     int rc = 0;
     uint16_t value = 0;
-    struct tfa9887_amp_t *amp = NULL;
+    struct tfa_amp_t *amp = NULL;
 
     if (main_amp) {
         ALOGE("%s: TFA9887 already opened\n", __func__);
@@ -1811,7 +1811,7 @@ int tfa9887_open(void)
         goto open_err;
     }
 
-    main_amp = calloc(1, sizeof(struct tfa9887_amp_t));
+    main_amp = calloc(1, sizeof(struct tfa_amp_t));
     if (!main_amp) {
         ALOGE("%s: Failed to allocate TFA9887 amplifier device memory", __func__);
         rc = -ENOMEM;
@@ -1903,10 +1903,10 @@ open_err:
     return rc;
 }
 
-int tfa9887_power(bool on)
+int tfa_power(bool on)
 {
     int rc;
-    struct tfa9887_amp_t *amp = NULL;
+    struct tfa_amp_t *amp = NULL;
 
     if (!main_amp) {
         ALOGE("%s: TFA9887 not open!\n", __func__);
@@ -1923,11 +1923,11 @@ int tfa9887_power(bool on)
     return 0;
 }
 
-int tfa9887_set_mode(audio_mode_t mode)
+int tfa_set_mode(audio_mode_t mode)
 {
     int rc;
     uint32_t dsp_mode;
-    struct tfa9887_amp_t *amp = NULL;
+    struct tfa_amp_t *amp = NULL;
 
     if (!main_amp) {
         ALOGE("%s: TFA9887 not opened\n", __func__);
@@ -1960,10 +1960,10 @@ int tfa9887_set_mode(audio_mode_t mode)
     return 0;
 }
 
-int tfa9887_set_mute(bool on)
+int tfa_set_mute(bool on)
 {
     int rc;
-    struct tfa9887_amp_t *amp = NULL;
+    struct tfa_amp_t *amp = NULL;
 
     if (!main_amp) {
         ALOGE("%s: TFA9887 not open!\n", __func__);
@@ -1981,9 +1981,9 @@ int tfa9887_set_mute(bool on)
     return 0;
 }
 
-int tfa9887_close(void)
+int tfa_close(void)
 {
-    struct tfa9887_amp_t *amp = NULL;
+    struct tfa_amp_t *amp = NULL;
 
     if (!main_amp) {
         ALOGE("%s: TFA9887 not open!\n", __func__);

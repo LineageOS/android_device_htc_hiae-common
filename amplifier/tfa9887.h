@@ -84,7 +84,7 @@ enum {
     TFA9887_DMEM_IOMEM,
 };
 
-struct tfa9887_amp_t {
+struct tfa_t {
     int fd;
     uint32_t mode;
     bool initializing;
@@ -221,8 +221,8 @@ struct tfa9887_amp_t {
 
 #define I2S_MIXER_CTL "QUIN_MI2S_RX Audio Mixer MultiMedia1"
 
-int tfa9887_open(void);
-int tfa9887_power(bool on);
-int tfa9887_set_mode(audio_mode_t mode);
-int tfa9887_set_mute(bool on);
-int tfa9887_close(void);
+int tfa_open(void);
+int tfa_power(bool on);
+int tfa_set_mode(audio_mode_t mode);
+int tfa_set_mute(bool on);
+int tfa_close(void);
