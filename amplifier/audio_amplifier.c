@@ -35,6 +35,7 @@
 typedef struct amp_device {
     amplifier_device_t amp_dev;
     struct tfa_t *tfa;
+    struct rt55xx_t *rt55xx;
     audio_mode_t current_mode;
 } amp_device_t;
 
@@ -59,7 +60,7 @@ static int amp_set_output_devices(amplifier_device_t *device, uint32_t devices)
         case SND_DEVICE_OUT_SPEAKER_AND_HEADPHONES:
         case SND_DEVICE_OUT_VOICE_HEADPHONES:
         case SND_DEVICE_OUT_VOIP_HEADPHONES:
-            rt55xx_set_mode(dev->current_mode);
+            rt55xx_set_mode(dev->rt55xx, dev->current_mode);
             break;
     }
 
@@ -95,6 +96,8 @@ static int amp_dev_close(hw_device_t *device)
     tfa_power(dev->tfa, false);
     tfa_destroy(dev->tfa);
 
+    rt55xx_destroy(dev->rt55xx);
+
     free(dev);
 
     return 0;
@@ -104,6 +107,7 @@ static int amp_module_open(const hw_module_t *module, UNUSED const char *name,
         hw_device_t **device)
 {
     struct tfa_t *tfa;
+    struct rt55xx_t *rt55xx;
 
     if (amp_dev) {
         ALOGE("%s:%d: Unable to open second instance of TFA9887 amplifier\n",
@@ -115,6 +119,14 @@ static int amp_module_open(const hw_module_t *module, UNUSED const char *name,
     if (!tfa) {
         ALOGE("%s:%d: Unable to construct TFA module\n",
                 __func__, __LINE__);
+        return -ENOENT;
+    }
+
+    rt55xx = rt55xx_new();
+    if (!rt55xx) {
+        ALOGE("%s:%d: Unable to construct RT55XX module\n",
+                __func__, __LINE__);
+        tfa_destroy(tfa);
         return -ENOENT;
     }
 
@@ -143,8 +155,7 @@ static int amp_module_open(const hw_module_t *module, UNUSED const char *name,
     amp_dev->current_mode = AUDIO_MODE_NORMAL;
 
     amp_dev->tfa = tfa;
-
-    rt55xx_open();
+    amp_dev->rt55xx = rt55xx;
 
     tfa_init(tfa);
 

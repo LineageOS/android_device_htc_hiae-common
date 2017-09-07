@@ -20,5 +20,11 @@
 
 #define RT55XX_DEVICE "/dev/rt5501"
 
-int rt55xx_open(void);
-int rt55xx_set_mode(audio_mode_t mode);
+struct rt55xx_t {
+    int fd;
+    int mode;
+};
+
+struct rt55xx_t * rt55xx_new(void);
+int rt55xx_set_mode(struct rt55xx_t *amp, audio_mode_t mode);
+void rt55xx_destroy(struct rt55xx_t *amp);

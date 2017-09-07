@@ -26,6 +26,7 @@
 #include <errno.h>
 #include <fcntl.h>
 #include <stdio.h>
+#include <stdlib.h>
 #include <sys/ioctl.h>
 
 static struct rt55xx_config rt55xx_playback_config = {
@@ -83,10 +84,9 @@ static struct rt55xx_config rt55xx_ring_config = {
     },
 };
 
-int rt55xx_open()
+static int rt55xx_configure(struct rt55xx_t *amp)
 {
     int rc = 0;
-    int fd;
     struct rt55xx_config_data cfg;
 
     memset(&cfg, 0, sizeof(struct rt55xx_config_data));
@@ -112,45 +112,60 @@ int rt55xx_open()
     //cfg.cmd_data[RT55XX_MODE_MONO_BEATS].config = rt55xx_mono_beats_config;
 
     /* Open the amplifier device */
-    if ((fd = open(RT55XX_DEVICE, O_RDWR)) < 0) {
-        rc = -errno;
-        ALOGE("%s: error opening amplifier device %s: %d\n",
-                __func__, RT55XX_DEVICE, rc);
-        goto open_err;
-    }
-
     /* Load config */
-    if ((rc = ioctl(fd, RT55XX_SET_PARAM, &cfg)) < 0) {
+    if ((rc = ioctl(amp->fd, RT55XX_SET_PARAM, &cfg)) < 0) {
         rc = -errno;
         ALOGE("%s: ioctl RT55XX_SET_CONFIG failed. ret = %d\n",
                 __func__, rc);
-        goto open_err;
     }
 
-open_err:
-    close(fd);
     return rc;
 }
 
-int rt55xx_set_mode(audio_mode_t mode)
+struct rt55xx_t * rt55xx_new(void)
 {
-    int headsetohm = HEADSET_OM_UNDER_DETECT;
-    int fd, amp_mode;
-    int rc = 0;
+    struct rt55xx_t *amp;
+    int rc;
 
-    /* Open the amplifier device */
-    if ((fd = open(RT55XX_DEVICE, O_RDWR)) < 0) {
-        rc = -errno;
-        ALOGE("%s: error opening amplifier device %s: %d\n",
-                __func__, RT55XX_DEVICE, rc);
-        goto set_mode_err;
+    amp = calloc(1, sizeof(struct rt55xx_t));
+    if (!amp) {
+        ALOGE("%s:%d: Unable to allocate memory for RT55XX module\n",
+                __func__, __LINE__);
+        return NULL;
     }
 
+    if ((amp->fd = open(RT55XX_DEVICE, O_RDWR)) < 0) {
+        rc = -errno;
+        ALOGE("%s:%d: Error opening amplifier device %s: %d\n",
+                __func__, __LINE__, RT55XX_DEVICE, rc);
+        free(amp);
+        return NULL;
+    }
+
+    rc = rt55xx_configure(amp);
+    if (rc) {
+        ALOGE("%s:%d: Failed to configure amplifier device\n",
+                __func__, __LINE__);
+        close(amp->fd);
+        free(amp);
+        return NULL;
+    }
+
+    amp->mode = RT55XX_MODE_PLAYBACK;
+
+    return amp;
+}
+
+int rt55xx_set_mode(struct rt55xx_t *amp, audio_mode_t mode)
+{
+    int headsetohm = HEADSET_OM_UNDER_DETECT;
+    int rc = 0;
+
     /* Get impedance of headset */
-    if ((rc = ioctl(fd, RT55XX_QUERY_OM, &headsetohm)) < 0) {
+    if ((rc = ioctl(amp->fd, RT55XX_QUERY_OM, &headsetohm)) < 0) {
         rc = -errno;
         ALOGE("%s: error querying headset impedance: %d\n", __func__, rc);
-        goto set_mode_err;
+        return rc;
     }
 
     switch (mode) {
@@ -159,32 +174,35 @@ int rt55xx_set_mode(audio_mode_t mode)
             /* For headsets with a impedance between 128ohm and 1000ohm */
             if (headsetohm >= HEADSET_128OM && headsetohm <= HEADSET_1KOM) {
                 ALOGI("%s: Mode: Playback 128\n", __func__);
-                amp_mode = RT55XX_MODE_PLAYBACK128OH;
+                amp->mode = RT55XX_MODE_PLAYBACK128OH;
             } else {
                 ALOGI("%s: Mode: Playback\n", __func__);
-                amp_mode = RT55XX_MODE_PLAYBACK;
+                amp->mode = RT55XX_MODE_PLAYBACK;
             }
             break;
         case AUDIO_MODE_RINGTONE:
             ALOGI("%s: Mode: Ring\n", __func__);
-            amp_mode = RT55XX_MODE_RING;
+            amp->mode = RT55XX_MODE_RING;
             break;
         case AUDIO_MODE_IN_CALL:
         case AUDIO_MODE_IN_COMMUNICATION:
             ALOGI("%s: Mode: Voice\n", __func__);
-            amp_mode = RT55XX_MODE_VOICE;
+            amp->mode = RT55XX_MODE_VOICE;
             break;
     }
 
     /* Set the selected config */
-    if ((rc = ioctl(fd, RT55XX_SET_MODE, &amp_mode)) < 0) {
+    if ((rc = ioctl(amp->fd, RT55XX_SET_MODE, &amp->mode)) < 0) {
         rc = -errno;
         ALOGE("%s: ioctl RT55XX_SET_MODE failed. rc = %d\n", __func__, rc);
-        goto set_mode_err;
+        return rc;
     }
 
-set_mode_err:
-    close(fd);
+    return 0;
+}
 
-    return rc;
+void rt55xx_destroy(struct rt55xx_t *amp)
+{
+    close(amp->fd);
+    free(amp);
 }
