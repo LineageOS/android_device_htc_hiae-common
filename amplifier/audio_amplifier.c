@@ -67,10 +67,24 @@ static int amp_set_output_devices(amplifier_device_t *device, uint32_t devices)
     return 0;
 }
 
+static int select_profile(audio_mode_t mode) {
+    switch (mode) {
+        case AUDIO_MODE_IN_CALL:
+            return TFA9887_MODE_VOICE;
+        case AUDIO_MODE_IN_COMMUNICATION:
+            return TFA9887_MODE_VOIP;
+        case AUDIO_MODE_NORMAL:
+        default:
+            return TFA9887_MODE_PLAYBACK;
+    }
+}
+
 static int amp_enable_output_devices(amplifier_device_t *device,
         uint32_t devices, bool enable)
 {
     amp_device_t *dev = (amp_device_t *) device;
+
+    int tfa_mode = select_profile(dev->current_mode);
 
     switch (devices) {
         case SND_DEVICE_OUT_SPEAKER:

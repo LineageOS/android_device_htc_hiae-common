@@ -16,8 +16,6 @@
 
 #pragma once
 
-#include <system/audio.h>
-
 #include <pthread.h>
 #include <stdatomic.h>
 #include <stdbool.h>
@@ -87,7 +85,7 @@ enum {
 
 struct tfa_t {
     int fd;
-    uint32_t mode;
+    int mode;
     atomic_bool initializing;
     bool clock_enabled;
     bool writing;
@@ -228,6 +226,6 @@ int tfa_clock_on(struct tfa_t *amp);
 int tfa_clock_off(struct tfa_t *amp);
 int tfa_init(struct tfa_t *amp);
 int tfa_power(struct tfa_t *amp, bool on);
-int tfa_set_mode(struct tfa_t *amp, audio_mode_t mode);
+int tfa_set_mode(struct tfa_t *amp, int mode);
 int tfa_set_mute(struct tfa_t *amp, bool on);
 void tfa_destroy(struct tfa_t *amp);
