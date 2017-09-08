@@ -27,7 +27,7 @@
 #include <voice.h>
 #include <msm8916/platform.h>
 
-#include "tfa9887.h"
+#include "tfa.h"
 #include "rt5501.h"
 
 #define UNUSED __attribute__((unused))
