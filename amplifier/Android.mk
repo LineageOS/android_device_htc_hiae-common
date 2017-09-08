@@ -20,7 +20,7 @@ LOCAL_ADDITIONAL_DEPENDENCIES += $(TARGET_OUT_INTERMEDIATES)/KERNEL_OBJ/usr
 
 LOCAL_SRC_FILES := \
 	rt5501.c \
-	tfa9887.c \
+	tfa.c \
 	audio_amplifier.c
 
 LOCAL_MODULE := audio_amplifier.msm8952
