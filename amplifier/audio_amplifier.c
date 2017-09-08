@@ -92,10 +92,10 @@ static int amp_enable_output_devices(amplifier_device_t *device,
         case SND_DEVICE_OUT_VOICE_SPEAKER:
         case SND_DEVICE_OUT_VOIP_SPEAKER:
             tfa_power(dev->tfa, enable);
-            if (enable) {
-                /* FIXME: This may fail because I2S is not active */
-                tfa_set_mute(dev->tfa, false);
-                tfa_set_mode(dev->tfa, dev->current_mode);
+            if (enable && tfa_mode != dev->tfa->mode) {
+                tfa_clock_on(dev->tfa);
+                tfa_set_mode(dev->tfa, tfa_mode);
+                tfa_clock_off(dev->tfa);
             }
             break;
     }
