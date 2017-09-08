@@ -157,7 +157,10 @@ static int amp_module_open(const hw_module_t *module, UNUSED const char *name,
     amp_dev->tfa = tfa;
     amp_dev->rt55xx = rt55xx;
 
+
+    tfa_clock_on(tfa);
     tfa_init(tfa);
+    tfa_clock_off(tfa);
 
     *device = (hw_device_t *) amp_dev;
 

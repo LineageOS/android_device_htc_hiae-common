@@ -1785,6 +1785,7 @@ struct tfa_t * tfa_new(void)
     amp->mode = TFA9887_MODE_PLAYBACK;
     amp->initializing = true;
     amp->writing = false;
+    amp->clock_enabled = false;
     pthread_mutex_init(&amp->mutex, NULL);
     pthread_cond_init(&amp->cond, NULL);
 
@@ -1799,7 +1800,42 @@ struct tfa_t * tfa_new(void)
     return amp;
 }
 
-/* TODO: split into a clocks on/off function */
+int tfa_clock_on(struct tfa_t *amp)
+{
+    if (amp->clock_enabled) {
+        ALOGW("%s: clocks already on\n", __func__);
+        return -EBUSY;
+    }
+
+    pthread_create(&amp->write_thread, NULL, write_dummy_data, amp);
+    pthread_mutex_lock(&amp->mutex);
+    while (!amp->writing) {
+        pthread_cond_wait(&amp->cond, &amp->mutex);
+    }
+    pthread_mutex_unlock(&amp->mutex);
+    amp->clock_enabled = true;
+
+    ALOGI("%s: clocks enabled\n", __func__);
+
+    return 0;
+}
+
+int tfa_clock_off(struct tfa_t *amp)
+{
+    if (!amp->clock_enabled) {
+        ALOGW("%s: clocks already off\n", __func__);
+        return 0;
+    }
+
+    amp->initializing = false;
+    pthread_join(amp->write_thread, NULL);
+    amp->clock_enabled = false;
+
+    ALOGI("%s: clocks disabled\n", __func__);
+
+    return 0;
+}
+
 int tfa_init(struct tfa_t *amp)
 {
     int rc = 0;
@@ -1812,13 +1848,6 @@ int tfa_init(struct tfa_t *amp)
     }
 
     /* Open I2S interface while DSP ops are occurring */
-    pthread_create(&amp->write_thread, NULL, write_dummy_data, amp);
-    pthread_mutex_lock(&amp->mutex);
-    while (!amp->writing) {
-        pthread_cond_wait(&amp->cond, &amp->mutex);
-    }
-    pthread_mutex_unlock(&amp->mutex);
-
 #ifdef WITH_MFG_RESET_CALIBRATION
     /* Only for MFG ROM */
     rc = tfa9887_reset_calibration(amp);
@@ -1873,9 +1902,6 @@ int tfa_init(struct tfa_t *amp)
     }
 
 open_i2s_shutdown:
-    /* Shut down I2S interface */
-    amp->initializing = false;
-    pthread_join(amp->write_thread, NULL);
     /* Remember to power off, since we powered on in hw_init */
     tfa9887_hw_power(amp, false);
 
@@ -1890,6 +1916,7 @@ int tfa_power(struct tfa_t *amp, bool on)
     rc = tfa9887_hw_power(amp, on);
     if (rc) {
         ALOGE("Unable to power on amp: %d\n", rc);
+        return rc;
     }
 
     ALOGI("%s: Set amplifier power to %d\n", __func__, on);

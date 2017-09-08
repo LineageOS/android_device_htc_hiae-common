@@ -19,6 +19,7 @@
 #include <system/audio.h>
 
 #include <pthread.h>
+#include <stdatomic.h>
 #include <stdbool.h>
 #include <stdint.h>
 
@@ -87,7 +88,8 @@ enum {
 struct tfa_t {
     int fd;
     uint32_t mode;
-    bool initializing;
+    atomic_bool initializing;
+    bool clock_enabled;
     bool writing;
     pthread_t write_thread;
     pthread_mutex_t mutex;
@@ -222,6 +224,8 @@ struct tfa_t {
 #define I2S_MIXER_CTL "QUIN_MI2S_RX Audio Mixer MultiMedia1"
 
 struct tfa_t * tfa_new(void);
+int tfa_clock_on(struct tfa_t *amp);
+int tfa_clock_off(struct tfa_t *amp);
 int tfa_init(struct tfa_t *amp);
 int tfa_power(struct tfa_t *amp, bool on);
 int tfa_set_mode(struct tfa_t *amp, audio_mode_t mode);
