@@ -104,10 +104,6 @@ PRODUCT_PACKAGES += \
     memtrack.msm8952 \
     liboverlay
 
-# Dot View Case
-PRODUCT_PACKAGES += \
-    FlipFlap
-
 # Fingerprint
 PRODUCT_PACKAGES += \
     fingerprintd \
