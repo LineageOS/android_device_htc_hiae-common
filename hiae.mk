@@ -109,10 +109,6 @@ PRODUCT_PACKAGES += \
     fingerprintd \
     libshim_power
 
-# Gesture Handler
-PRODUCT_PACKAGES += \
-    GestureHandler
-
 # GPS
 PRODUCT_PACKAGES += \
     libshim_gps
