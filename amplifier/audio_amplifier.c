@@ -91,12 +91,14 @@ static int amp_enable_output_devices(amplifier_device_t *device,
         case SND_DEVICE_OUT_SPEAKER_AND_HEADPHONES:
         case SND_DEVICE_OUT_VOICE_SPEAKER:
         case SND_DEVICE_OUT_VOIP_SPEAKER:
+#ifdef WITH_TFA
             tfa_power(dev->tfa, enable);
             if (enable && tfa_mode != dev->tfa->mode) {
                 tfa_clock_on(dev->tfa);
                 tfa_set_mode(dev->tfa, tfa_mode);
                 tfa_clock_off(dev->tfa);
             }
+#endif
             break;
     }
 
@@ -107,7 +109,9 @@ static int amp_dev_close(hw_device_t *device)
 {
     amp_device_t *dev = (amp_device_t *) device;
 
+#if WITH_TFA
     tfa_power(dev->tfa, false);
+#endif
     tfa_destroy(dev->tfa);
 
     rt55xx_destroy(dev->rt55xx);
@@ -171,10 +175,11 @@ static int amp_module_open(const hw_module_t *module, UNUSED const char *name,
     amp_dev->tfa = tfa;
     amp_dev->rt55xx = rt55xx;
 
-
+#ifdef WITH_TFA
     tfa_clock_on(tfa);
     tfa_init(tfa);
     tfa_clock_off(tfa);
+#endif
 
     *device = (hw_device_t *) amp_dev;
 
