@@ -20,9 +20,6 @@ COMMON_PATH := device/htc/hiae-common
 
 TARGET_SPECIFIC_HEADER_PATH := device/htc/hiae-common/include
 
-# Assertions
-TARGET_BOARD_INFO_FILE ?= $(COMMON_PATH)/board-info.txt
-
 # Architecture
 TARGET_ARCH := arm64
 TARGET_ARCH_VARIANT := armv8-a
@@ -139,10 +136,6 @@ TARGET_USE_SDCLANG := true
 
 # Recovery
 TARGET_RECOVERY_FSTAB := $(COMMON_PATH)/rootdir/etc/fstab.qcom
-
-# Releasetools
-TARGET_RECOVERY_UPDATER_LIBS := librecovery_updater_hiae
-TARGET_RELEASETOOLS_EXTENSIONS := $(COMMON_PATH)
 
 # RIL
 TARGET_RIL_VARIANT := caf
