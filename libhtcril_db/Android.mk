@@ -18,7 +18,7 @@ include $(CLEAR_VARS)
 LOCAL_SRC_FILES := \
     htcril_db.c
 
-LOCAL_SHARED_LIBRARIES := libcutils libsqlite
+LOCAL_SHARED_LIBRARIES := liblog libsqlite
 
 LOCAL_MODULE := libhtcril_db
 LOCAL_MODULE_TAGS := optional
