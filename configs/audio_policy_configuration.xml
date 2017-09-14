@@ -46,7 +46,7 @@
     -->
     <modules>
         <!-- Primary Audio HAL -->
-        <module name="primary" halVersion="2.0">
+        <module name="primary" halVersion="3.0">
             <attachedDevices>
                 <item>Earpiece</item>
                 <item>Speaker</item>
@@ -66,50 +66,18 @@
                     <profile name="" format="AUDIO_FORMAT_PCM_16_BIT"
                              samplingRates="48000" channelMasks="AUDIO_CHANNEL_OUT_STEREO"/>
                 </mixPort>
-                <mixPort name="direct_pcm" role="source"
-                        flags="AUDIO_OUTPUT_FLAG_DIRECT|AUDIO_OUTPUT_FLAG_DIRECT_PCM">
-                    <profile name="" format="AUDIO_FORMAT_PCM_16_BIT"
-                             samplingRates="8000,11025,16000,22050,32000,44100,48000,64000,88200,96000,176400,192000"
-                             channelMasks="AUDIO_CHANNEL_OUT_MONO,AUDIO_CHANNEL_OUT_STEREO,AUDIO_CHANNEL_OUT_2POINT1,AUDIO_CHANNEL_OUT_QUAD,AUDIO_CHANNEL_OUT_PENTA,AUDIO_CHANNEL_OUT_5POINT1,AUDIO_CHANNEL_OUT_6POINT1,AUDIO_CHANNEL_OUT_7POINT1"/>
-                    <profile name="" format="AUDIO_FORMAT_PCM_8_24_BIT"
-                             samplingRates="8000,11025,16000,22050,32000,44100,48000,64000,88200,96000,176400,192000"
-                             channelMasks="AUDIO_CHANNEL_OUT_MONO,AUDIO_CHANNEL_OUT_STEREO,AUDIO_CHANNEL_OUT_2POINT1,AUDIO_CHANNEL_OUT_QUAD,AUDIO_CHANNEL_OUT_PENTA,AUDIO_CHANNEL_OUT_5POINT1,AUDIO_CHANNEL_OUT_6POINT1,AUDIO_CHANNEL_OUT_7POINT1"/>
-                    <profile name="" format="AUDIO_FORMAT_PCM_24_BIT_PACKED"
-                             samplingRates="8000,11025,16000,22050,32000,44100,48000,64000,88200,96000,176400,192000"
-                             channelMasks="AUDIO_CHANNEL_OUT_MONO,AUDIO_CHANNEL_OUT_STEREO,AUDIO_CHANNEL_OUT_2POINT1,AUDIO_CHANNEL_OUT_QUAD,AUDIO_CHANNEL_OUT_PENTA,AUDIO_CHANNEL_OUT_5POINT1,AUDIO_CHANNEL_OUT_6POINT1,AUDIO_CHANNEL_OUT_7POINT1"/>
-                </mixPort>
                 <mixPort name="compressed_offload" role="source"
                          flags="AUDIO_OUTPUT_FLAG_DIRECT|AUDIO_OUTPUT_FLAG_COMPRESS_OFFLOAD|AUDIO_OUTPUT_FLAG_NON_BLOCKING">
                     <profile name="" format="AUDIO_FORMAT_MP3"
                              samplingRates="8000,11025,12000,16000,22050,24000,32000,44100,48000"
                              channelMasks="AUDIO_CHANNEL_OUT_STEREO,AUDIO_CHANNEL_OUT_MONO"/>
-                    <profile name="" format="AUDIO_FORMAT_FLAC"
-                             samplingRates="8000,11025,12000,16000,22050,24000,32000,44100,48000,64000,88200,96000,128000,176400,192000"
-                             channelMasks="AUDIO_CHANNEL_OUT_STEREO,AUDIO_CHANNEL_OUT_MONO"/>
                     <profile name="" format="AUDIO_FORMAT_AAC_LC"
-                             samplingRates="8000,11025,12000,16000,22050,24000,32000,44100,48000,64000,88200,96000"
-                             channelMasks="AUDIO_CHANNEL_OUT_STEREO,AUDIO_CHANNEL_OUT_MONO"/>
-                    <profile name="" format="AUDIO_FORMAT_AAC_HE_V1"
-                             samplingRates="8000,11025,12000,16000,22050,24000,32000,44100,48000,64000,88200,96000"
-                             channelMasks="AUDIO_CHANNEL_OUT_STEREO,AUDIO_CHANNEL_OUT_MONO"/>
-                    <profile name="" format="AUDIO_FORMAT_AAC_HE_V2"
-                             samplingRates="8000,11025,12000,16000,22050,24000,32000,44100,48000,64000,88200,96000"
-                             channelMasks="AUDIO_CHANNEL_OUT_STEREO,AUDIO_CHANNEL_OUT_MONO"/>
-                    <profile name="" format="AUDIO_FORMAT_WMA"
                              samplingRates="8000,11025,12000,16000,22050,24000,32000,44100,48000"
-                             channelMasks="AUDIO_CHANNEL_OUT_MONO,AUDIO_CHANNEL_OUT_STEREO,AUDIO_CHANNEL_OUT_2POINT1,AUDIO_CHANNEL_OUT_QUAD,AUDIO_CHANNEL_OUT_PENTA,AUDIO_CHANNEL_OUT_5POINT1,AUDIO_CHANNEL_OUT_6POINT1,AUDIO_CHANNEL_OUT_7POINT1"/>
-                    <profile name="" format="AUDIO_FORMAT_VORBIS"
-                             samplingRates="8000,11025,12000,16000,22050,24000,32000,44100,48000,64000,88200,96000,128000,176400,192000"
                              channelMasks="AUDIO_CHANNEL_OUT_STEREO,AUDIO_CHANNEL_OUT_MONO"/>
                 </mixPort>
                 <mixPort name="voice_tx" role="source">
                     <profile name="" format="AUDIO_FORMAT_PCM_16_BIT"
                              samplingRates="8000,16000,48000" channelMasks="AUDIO_CHANNEL_OUT_MONO,AUDIO_CHANNEL_OUT_STEREO"/>
-                </mixPort>
-                <mixPort name="voip_rx" role="source"
-                         flags="AUDIO_OUTPUT_FLAG_DIRECT|AUDIO_OUTPUT_FLAG_VOIP_RX">
-                    <profile name="" format="AUDIO_FORMAT_PCM_16_BIT"
-                             samplingRates="8000,16000" channelMasks="AUDIO_CHANNEL_OUT_MONO"/>
                 </mixPort>
 
                 <mixPort name="primary input" role="sink">
@@ -126,6 +94,7 @@
             <devicePorts>
                 <!-- Output devices declaration, i.e. Sink DEVICE PORT -->
                 <devicePort tagName="Earpiece" type="AUDIO_DEVICE_OUT_EARPIECE" role="sink">
+
                 </devicePort>
                 <devicePort tagName="Speaker" type="AUDIO_DEVICE_OUT_SPEAKER" role="sink">
                 </devicePort>
@@ -158,15 +127,15 @@
             <!-- route declaration, i.e. list all available sources for a given sink -->
             <routes>
                 <route type="mix" sink="Earpiece"
-                       sources="primary output,deep_buffer,voip_rx"/>
+                       sources="primary output,deep_buffer"/>
                 <route type="mix" sink="Speaker"
-                       sources="primary output,deep_buffer,direct_pcm,compressed_offload"/>
+                       sources="primary output,deep_buffer,compressed_offload"/>
                 <route type="mix" sink="Wired Headset"
-                       sources="primary output,deep_buffer,direct_pcm,compressed_offload"/>
+                       sources="primary output,deep_buffer,compressed_offload"/>
                 <route type="mix" sink="Wired Headphones"
-                       sources="primary output,deep_buffer,direct_pcm,compressed_offload"/>
+                       sources="primary output,deep_buffer,compressed_offload"/>
                 <route type="mix" sink="Line Out"
-                       sources="primary output,deep_buffer,direct_pcm,compressed_offload"/>
+                       sources="primary output,deep_buffer,compressed_offload"/>
                 <route type="mix" sink="BT SCO"
                        sources="primary output,deep_buffer"/>
                 <route type="mix" sink="BT SCO Headset"
