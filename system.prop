@@ -58,6 +58,9 @@ persist.rild.nitz_short_ons_1=
 persist.rild.nitz_short_ons_2=
 persist.rild.nitz_short_ons_3=
 
+# OMX
+persist.media.treble_omx=false
+
 # Perf
 ro.vendor.extension_library=libqti-perfd-client.so
 
