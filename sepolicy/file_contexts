@@ -1,37 +1,48 @@
-# Audio
+# Data
+/data/fpc(/.*)?                             u:object_r:tee_data_file:s0
+/data/misc/ipa(/.*)?                        u:object_r:ipacm_data_file:s0
+/data/time(/.*)?                            u:object_r:time_data_file:s0
+/dev/radio(/.*)?                            u:object_r:radio_data_file:s0
+
+# Device
 /dev/htc-acoustic                           u:object_r:audio_device:s0
 /dev/rt5501                                 u:object_r:audio_device:s0
 /dev/tfa9887                                u:object_r:audio_device:s0
 /dev/tfa9887l                               u:object_r:audio_device:s0
 
-# Carrier
-/carrier(/.*)?                              u:object_r:carrier_file:s0
-
-# Debugfs
+# Debug
 /sys/kernel/debug/ion/heaps/system          u:object_r:debugfs_ion:s0
 
-# CMHW
-/sys/devices/virtual/timed_output/vibrator/voltage_level u:object_r:sysfs_vibeamp:s0
+# Filesystems
+/carrier(/.*)?                              u:object_r:carrier_file:s0
+/firmware(/.*)?                             u:object_r:firmware_file:s0
 
-# Fingerprint
-/data/fpc(/.*)?                             u:object_r:fingerprintd_data_file:s0
-/sys/devices/soc.0/fp_fpc1155.108(/.*)?     u:object_r:sysfs_fingerprint:s0
+# HALs
+/system/vendor/bin/hw/android\.hardware\.light@2\.0-service.hiae               u:object_r:hal_light_default_exec:s0
+/system/vendor/bin/hw/android\.hardware\.usb@1\.0-service.hiae                 u:object_r:hal_usb_default_exec:s0
+/system/vendor/bin/hw/android\.hardware\.vibrator@1\.0-service.hiae            u:object_r:hal_vibrator_default_exec:s0
 
-# FRP
-/dev/block/bootdevice/by-name/frp           u:object_r:frp_block_device:s0
+# Partitions
+/dev/block/platform/soc\.0/7824900\.sdhci/by-name/cache                 u:object_r:cache_block_device:s0
+/dev/block/platform/soc\.0/7824900\.sdhci/by-name/extra                 u:object_r:metadata_block_device:s0
+/dev/block/platform/soc\.0/7824900\.sdhci/by-name/frp                   u:object_r:frp_block_device:s0
+/dev/block/platform/soc\.0/7824900\.sdhci/by-name/recovery              u:object_r:recovery_block_device:s0
+/dev/block/platform/soc\.0/7824900\.sdhci/by-name/rfg_[0-9]+            u:object_r:modem_block_device:s0
 
-# Gesture
-/sys/devices/virtual/htc_sensorhub/sensor_hub/gesture_motion    u:object_r:sysfs_gesture:s0
+# Sysfs
+/sys/devices/soc.0/1a00000.qcom,mdss_mdp(/.*)?                          u:object_r:sysfs_graphics:s0
+/sys/devices/soc.0/fp_fpc1155.108(/.*)?                                 u:object_r:sysfs_fingerprint:s0
+/sys/devices/soc.0/78b6000.i2c/i2c-2/2-0032/leds(/.*)?                  u:object_r:sysfs_leds:s0
+/sys/devices/soc.0/78b8000.i2c/i2c-4/4-0072/iio:device0(/.*)?           u:object_r:sysfs_sensors:s0
+/sys/devices/virtual/htc_sensorhub(/.*)?                                u:object_r:sysfs_sensors:s0
+/sys/devices/virtual/timed_output/vibrator/voltage_level                u:object_r:sysfs_vibrator:s0
 
-# Properties
+# Vendor binaries
+/system/bin/audiod                          u:object_r:audiod_exec:s0
+/vendor/bin/imscmservice                    u:object_r:imscm_exec:s0
+/system/bin/ipacm-diag                      u:object_r:ipacm-diag_exec:s0
+/system/bin/ipacm                           u:object_r:ipacm_exec:s0
 /system/bin/operator-properties             u:object_r:operator-properties_exec:s0
-
-# Radio
-/dev/radio(/.*)?                            u:object_r:radio_data_file:s0
-/dev/block/bootdevice/by-name/rfg_[0-9]+     u:object_r:modem_efs_partition_device:s0
-
-# Storage
-/dev/block/bootdevice/by-name/extra         u:object_r:extra_block_device:s0
-
-# ZRAM
-/dev/block/zram[0-9]+                       u:object_r:swap_block_device:s0
+/system/bin/wcnss_service                   u:object_r:wcnss_service_exec:s0
+/system/etc/init.qcom.bt.sh                 u:object_r:bluetooth_loader_exec:s0
+/system/vendor/bin/perfd                    u:object_r:perfd_exec:s0

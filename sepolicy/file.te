@@ -1,5 +1,9 @@
-type carrier_file, file_type;
-type debugfs_ion, fs_type, debugfs_type;
-type sysfs_fingerprint, fs_type, sysfs_type;
-type sysfs_gesture, fs_type, sysfs_type;
-type sysfs_vibeamp, fs_type, sysfs_type;
+# debugfs
+type debugfs_ion, debugfs_type, fs_type;
+
+# files
+type carrier_file, fs_type;
+
+# sysfs
+type sysfs_fingerprint, sysfs_type, fs_type;
+type sysfs_sensors, sysfs_type, fs_type;

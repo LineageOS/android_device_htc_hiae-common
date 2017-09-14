@@ -1,4 +1,4 @@
-htc.camera.         u:object_r:camera_prop:s0
+htc.camera.                     u:object_r:camera_prop:s0
 
 # Set by operator-properties
 CMSUPPORT                       u:object_r:radio_prop:s0

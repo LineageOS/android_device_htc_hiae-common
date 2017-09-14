@@ -1,3 +1,4 @@
-allow perfd mpctl_socket:sock_file create_file_perms;
+type perfd, domain;
+type perfd_exec, exec_type, vendor_file_type, file_type;
 
-type_transition perfd mpctl_data_file:sock_file mpctl_socket;
+init_daemon_domain(perfd)
