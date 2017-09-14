@@ -1,0 +1,1 @@
+allow wcnss_service proc_wcnss_service:file r_file_perms;
