@@ -432,6 +432,10 @@ customize/MNSprop/311180.prop
 customize/MNSprop/default.prop
 customize/mns_map.xml
 
+# Protobuf
+vendor/lib64/libprotobuf-cpp-fulm.so
+vendor/lib64/libprotobuf-cpp-litm.so
+
 # Sensors
 lib64/hw/sensors.msm8952.so
 
