@@ -1,1 +1,1 @@
-allow adsprpcd_file adsprpcd_file:filesystem associate;
+r_dir_file(adsprpcd, firmware_file)

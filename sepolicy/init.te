@@ -1,1 +1,2 @@
-allow init adsprpcd_file:filesystem { relabelto relabelfrom mount };
+allow init carrier_file:dir mounton;
+allow init carrier_file:file rw_file_perms;
