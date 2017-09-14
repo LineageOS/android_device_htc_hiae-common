@@ -1,5 +1,5 @@
 # ADSP
-bin/adsprpcd
+bin/adsprpcd:vendor/bin/adsprpcd
 vendor/lib64/libadsp_default_listener.so
 vendor/lib64/libadsprpc.so
 vendor/lib/libadsprpc.so
@@ -16,25 +16,25 @@ etc/Headset_cal.acdb
 etc/Speaker_cal.acdb
 
 # Audio amplifier
-etc/tfa/fm.drc
-etc/tfa/fm.eq
-etc/tfa/fm.preset
-etc/tfa/playback.drc
-etc/tfa/playback.eq
-etc/tfa/playback.preset
-etc/tfa/Rec_Video.drc
-etc/tfa/Rec_Video.eq
-etc/tfa/Rec_Video.preset
-etc/tfa/tfa9895.config
-etc/tfa/tfa9895.patch
-etc/tfa/tfa9895.speaker
-etc/tfa/voice.drc
-etc/tfa/voice.eq
-etc/tfa/voice.preset
-etc/tfa/voiceWB.eq
-etc/tfa/voip.drc
-etc/tfa/voip.eq
-etc/tfa/voip.preset
+etc/tfa/fm.drc:vendor/etc/tfa/fm.drc
+etc/tfa/fm.eq:vendor/etc/tfa/fm.eq
+etc/tfa/fm.preset:vendor/etc/tfa/fm.preset
+etc/tfa/playback.drc:vendor/etc/tfa/playback.drc
+etc/tfa/playback.eq:vendor/etc/tfa/playback.eq
+etc/tfa/playback.preset:vendor/etc/tfa/playback.preset
+etc/tfa/Rec_Video.drc:vendor/etc/tfa/Rec_Video.drc
+etc/tfa/Rec_Video.eq:vendor/etc/tfa/Rec_Video.eq
+etc/tfa/Rec_Video.preset:vendor/etc/tfa/Rec_Video.preset
+etc/tfa/tfa9895.config:vendor/etc/tfa/tfa9895.config
+etc/tfa/tfa9895.patch:vendor/etc/tfa/tfa9895.patch
+etc/tfa/tfa9895.speaker:vendor/etc/tfa/tfa9895.speaker
+etc/tfa/voice.drc:vendor/etc/tfa/voice.drc
+etc/tfa/voice.eq:vendor/etc/tfa/voice.eq
+etc/tfa/voice.preset:vendor/etc/tfa/voice.preset
+etc/tfa/voiceWB.eq:vendor/etc/tfa/voiceWB.eq
+etc/tfa/voip.drc:vendor/etc/tfa/voip.drc
+etc/tfa/voip.eq:vendor/etc/tfa/voip.eq
+etc/tfa/voip.preset:vendor/etc/tfa/voip.preset
 
 # Audio libraries
 vendor/lib64/libacdb-fts.so
@@ -54,23 +54,23 @@ vendor/lib/soundfx/libqcvirt.so
 vendor/lib/soundfx/libswdap.so
 
 # Bluetooth
-bin/hci_qcomm_init
+bin/hci_qcomm_init:vendor/bin/hci_qcomm_init
 vendor/lib64/libbtnv.so
 vendor/lib/libaptX-1.0.0-rel-Android21-ARMv7A.so
 vendor/lib/libaptXScheduler.so
 
 # Camera
-bin/mm-qcamera-daemon
-lib/hw/camera.msm8952.so
-lib/libawb_calibration.so
-lib/libBeautyChat.so
-lib/libcameraface.so
-lib/libcamerapp.so
-lib/libhtc_facebeauty.so
-lib/libmmcamera_interface.so
-lib/libmmjpeg_interface.so
-lib/libmm-qcamera.so
-lib/libqomx_core.so
+bin/mm-qcamera-daemon:vendor/bin/mm-qcamera-daemon
+lib/hw/camera.msm8952.so:vendor/lib/hw/camera.msm8952.so
+lib/libawb_calibration.so:vendor/lib/libawb_calibration.so
+lib/libBeautyChat.so:vendor/lib/libBeautyChat.so
+lib/libcameraface.so:vendor/lib/libcameraface.so
+lib/libcamerapp.so:vendor/lib/libcamerapp.so
+lib/libhtc_facebeauty.so:vendor/lib/libhtc_facebeauty.so
+lib/libmmcamera_interface.so:vendor/lib/libmmcamera_interface.so
+lib/libmmjpeg_interface.so:vendor/lib/libmmjpeg_interface.so
+lib/libmm-qcamera.so:vendor/lib/libmm-qcamera.so
+lib/libqomx_core.so:vendor/lib/libqomx_core.so
 vendor/lib/libchromaflash.so
 vendor/lib/libflash_pmic.so
 vendor/lib/libjpegdhw.so
@@ -259,13 +259,13 @@ vendor/lib/libchromatix_ov4688_htc_zsl_video_3a.so
 
 # Camera firmware
 etc/firmware/alIAF_InData_4M2M
-etc/firmware/cpp_firmware_v1_1_1.fw
-etc/firmware/cpp_firmware_v1_1_6.fw
-etc/firmware/cpp_firmware_v1_2_0.fw
-etc/firmware/cpp_firmware_v1_4_0.fw
-etc/firmware/cpp_firmware_v1_5_0.fw
-etc/firmware/cpp_firmware_v1_6_0.fw
-etc/firmware/cpp_firmware_v1_8_0.fw
+etc/firmware/cpp_firmware_v1_1_1.fw:vendor/firmware/cpp_firmware_v1_1_1.fw
+etc/firmware/cpp_firmware_v1_1_6.fw:vendor/firmware/cpp_firmware_v1_1_6.fw
+etc/firmware/cpp_firmware_v1_2_0.fw:vendor/firmware/cpp_firmware_v1_2_0.fw
+etc/firmware/cpp_firmware_v1_4_0.fw:vendor/firmware/cpp_firmware_v1_4_0.fw
+etc/firmware/cpp_firmware_v1_5_0.fw:vendor/firmware/cpp_firmware_v1_5_0.fw
+etc/firmware/cpp_firmware_v1_6_0.fw:vendor/firmware/cpp_firmware_v1_6_0.fw
+etc/firmware/cpp_firmware_v1_8_0.fw:vendor/firmware/cpp_firmware_v1_8_0.fw
 etc/firmware/ILP0100_IPM_Code_out.bin
 etc/firmware/ILP0100_IPM_Data_out.bin
 etc/firmware/lscbuffer_rev2.bin
@@ -278,7 +278,7 @@ vendor/lib/libmmcamera_imx214_htc.so
 vendor/lib/libmmcamera_ov4688_htc.so
 
 # DRM
-bin/qseecomd
+bin/qseecomd:vendor/bin/qseecomd
 vendor/lib64/libdrmfs.so
 vendor/lib64/libdrmtime.so
 vendor/lib64/libQSEEComAPI.so
@@ -287,26 +287,26 @@ vendor/lib64/libssd.so
 vendor/lib/libQSEEComAPI.so
 
 # DRM firmware
-etc/firmware/cmnlib.b00
-etc/firmware/cmnlib.b01
-etc/firmware/cmnlib.b02
-etc/firmware/cmnlib.b03
-etc/firmware/cmnlib.mdt
-etc/firmware/dxhdcp2.b00
-etc/firmware/dxhdcp2.b01
-etc/firmware/dxhdcp2.b02
-etc/firmware/dxhdcp2.b03
-etc/firmware/dxhdcp2.mdt
-etc/firmware/htc_drmprov.b00
-etc/firmware/htc_drmprov.b01
-etc/firmware/htc_drmprov.b02
-etc/firmware/htc_drmprov.b03
-etc/firmware/htc_drmprov.mdt
-etc/firmware/widevine.b00
-etc/firmware/widevine.b01
-etc/firmware/widevine.b02
-etc/firmware/widevine.b03
-etc/firmware/widevine.mdt
+etc/firmware/cmnlib.b00:vendor/firmware/cmnlib.b00
+etc/firmware/cmnlib.b01:vendor/firmware/cmnlib.b01
+etc/firmware/cmnlib.b02:vendor/firmware/cmnlib.b02
+etc/firmware/cmnlib.b03:vendor/firmware/cmnlib.b03
+etc/firmware/cmnlib.mdt:vendor/firmware/cmnlib.mdt
+etc/firmware/dxhdcp2.b00:vendor/firmware/dxhdcp2.b00
+etc/firmware/dxhdcp2.b01:vendor/firmware/dxhdcp2.b01
+etc/firmware/dxhdcp2.b02:vendor/firmware/dxhdcp2.b02
+etc/firmware/dxhdcp2.b03:vendor/firmware/dxhdcp2.b03
+etc/firmware/dxhdcp2.mdt:vendor/firmware/dxhdcp2.mdt
+etc/firmware/htc_drmprov.b00:vendor/firmware/htc_drmprov.b00
+etc/firmware/htc_drmprov.b01:vendor/firmware/htc_drmprov.b01
+etc/firmware/htc_drmprov.b02:vendor/firmware/htc_drmprov.b02
+etc/firmware/htc_drmprov.b03:vendor/firmware/htc_drmprov.b03
+etc/firmware/htc_drmprov.mdt:vendor/firmware/htc_drmprov.mdt
+etc/firmware/widevine.b00:vendor/firmware/widevine.b00
+etc/firmware/widevine.b01:vendor/firmware/widevine.b01
+etc/firmware/widevine.b02:vendor/firmware/widevine.b02
+etc/firmware/widevine.b03:vendor/firmware/widevine.b03
+etc/firmware/widevine.mdt:vendor/firmware/widevine.mdt
 
 # Fingerprint
 etc/firmware/fpctzappfingerprint.b00
@@ -314,12 +314,12 @@ etc/firmware/fpctzappfingerprint.b01
 etc/firmware/fpctzappfingerprint.b02
 etc/firmware/fpctzappfingerprint.b03
 etc/firmware/fpctzappfingerprint.mdt
-lib64/hw/fingerprint.msm8952.so
-lib64/lib_fpc_tac_shared.so
-lib64/lib_fp_img_store.so
-lib/hw/fingerprint.msm8952.so
-lib/lib_fpc_tac_shared.so
-lib/lib_fp_img_store.so
+lib64/hw/fingerprint.msm8952.so:vendor/lib64/hw/fingerprint.msm8952.so
+lib64/lib_fpc_tac_shared.so:vendor/lib64/lib_fpc_tac_shared.so
+lib64/lib_fp_img_store.so:vendor/lib64/lib_fp_img_store.so
+lib/hw/fingerprint.msm8952.so:vendor/lib/hw/fingerprint.msm8952.so
+lib/lib_fpc_tac_shared.so:vendor/lib/lib_fpc_tac_shared.so
+lib/lib_fp_img_store.so:vendor/lib/lib_fp_img_store.so
 vendor/lib64/hw/gatekeeper.msm8952.so
 
 # Graphics
@@ -357,18 +357,18 @@ vendor/lib/libOpenCL.so
 vendor/lib/librs_adreno.so
 
 # Graphics firmware
-etc/firmware/a420_pfp.fw
-etc/firmware/a420_pm4.fw
+etc/firmware/a420_pfp.fw:vendor/firmware/a420_pfp.fw
+etc/firmware/a420_pm4.fw:vendor/firmware/a420_pm4.fw
 
 # IPA
-bin/ipacm-diag
+bin/ipacm-diag:vendor/bin/ipacm-diag
 
 # Keymaster
-etc/firmware/keymaste.b00
-etc/firmware/keymaste.b01
-etc/firmware/keymaste.b02
-etc/firmware/keymaste.b03
-etc/firmware/keymaste.mdt
+etc/firmware/keymaste.b00:vendor/firmware/keymaste.b00
+etc/firmware/keymaste.b01:vendor/firmware/keymaste.b01
+etc/firmware/keymaste.b02:vendor/firmware/keymaste.b02
+etc/firmware/keymaste.b03:vendor/firmware/keymaste.b03
+etc/firmware/keymaste.mdt:vendor/firmware/keymaste.mdt
 vendor/lib64/hw/keystore.msm8952.so
 
 # Media
@@ -383,32 +383,32 @@ vendor/lib/libOmxQcelp13Dec.so
 vendor/lib/libOmxWmaDec.so
 
 # Media firmware
-etc/firmware/venus.b00
-etc/firmware/venus.b01
-etc/firmware/venus.b02
-etc/firmware/venus.b03
-etc/firmware/venus.b04
-etc/firmware/venus.mbn
-etc/firmware/venus.mdt
-etc/firmware/venus-v1.b00
-etc/firmware/venus-v1.b01
-etc/firmware/venus-v1.b02
-etc/firmware/venus-v1.b03
-etc/firmware/venus-v1.b04
-etc/firmware/venus-v1.mbn
-etc/firmware/venus-v1.mdt
+etc/firmware/venus.b00:vendor/firmware/venus.b00
+etc/firmware/venus.b01:vendor/firmware/venus.b01
+etc/firmware/venus.b02:vendor/firmware/venus.b02
+etc/firmware/venus.b03:vendor/firmware/venus.b03
+etc/firmware/venus.b04:vendor/firmware/venus.b04
+etc/firmware/venus.mbn:vendor/firmware/venus.mbn
+etc/firmware/venus.mdt:vendor/firmware/venus.mdt
+etc/firmware/venus-v1.b00:vendor/firmware/venus-v1.b00
+etc/firmware/venus-v1.b01:vendor/firmware/venus-v1.b01
+etc/firmware/venus-v1.b02:vendor/firmware/venus-v1.b02
+etc/firmware/venus-v1.b03:vendor/firmware/venus-v1.b03
+etc/firmware/venus-v1.b04:vendor/firmware/venus-v1.b04
+etc/firmware/venus-v1.mbn:vendor/firmware/venus-v1.mbn
+etc/firmware/venus-v1.mdt:vendor/firmware/venus-v1.mdt
 
 # NFC
 vendor/firmware/libpn548_fw.so:vendor/firmware/libpn548ad_fw.so
 
 # Perf
-bin/msm_irqbalance
+bin/msm_irqbalance:vendor/bin/msm_irqbalance
 vendor/bin/perfd
 vendor/lib64/libqti-perfd-client.so
 vendor/lib/libqti-perfd-client.so
 
 # Peripheral manager
-bin/pm-service
+bin/pm-service:vendor/bin/pm-service
 vendor/lib64/libperipheral_client.so
 vendor/lib/libperipheral_client.so
 
@@ -437,7 +437,7 @@ vendor/lib64/libprotobuf-cpp-fulm.so
 vendor/lib64/libprotobuf-cpp-litm.so
 
 # Sensors
-lib64/hw/sensors.msm8952.so
+lib64/hw/sensors.msm8952.so:vendor/lib64/hw/sensors.msm8952.so
 
 # Thermal
 vendor/bin/thermal-engine
@@ -448,14 +448,14 @@ vendor/lib/libthermalioctl.so
 
 # Time services
 -app/TimeService/TimeService.apk
-bin/time_daemon
+bin/time_daemon:vendor/bin/time_daemon
 -vendor/lib64/libtime_genoff.so
 -vendor/lib64/libTimeService.so
 -vendor/lib/libtime_genoff.so
 -vendor/lib/libTimeService.so
 
 # Widevine
-lib/libdrmdecrypt.so
+lib/libdrmdecrypt.so:vendor/lib/libdrmdecrypt.so
 vendor/lib/drm/libdrmwvmplugin.so
 vendor/lib/libwvdrm_L1.so
 vendor/lib/libwvm.so
