@@ -71,22 +71,22 @@ typedef struct uint24 {
 #define PARAM_GET_LSMODEL 0x86  // Gets current LoudSpeaker Model.
 #define PARAM_GET_STATE 0xC0
 
-#define CONFIG_TFA9887 "/system/etc/tfa/tfa9895.config"
-#define PATCH_TFA9887 "/system/etc/tfa/tfa9895.patch"
+#define CONFIG_TFA9887 "/vendor/etc/tfa/tfa9895.config"
+#define PATCH_TFA9887 "/vendor/etc/tfa/tfa9895.patch"
 
-#define SPKR "/system/etc/tfa/tfa9895.speaker"
+#define SPKR "/vendor/etc/tfa/tfa9895.speaker"
 
-#define PRESET_PLAYBACK "/system/etc/tfa/playback.preset"
-#define PRESET_VOICE "/system/etc/tfa/voice.preset"
-#define PRESET_VOIP "/system/etc/tfa/voip.preset"
+#define PRESET_PLAYBACK "/vendor/etc/tfa/playback.preset"
+#define PRESET_VOICE "/vendor/etc/tfa/voice.preset"
+#define PRESET_VOIP "/vendor/etc/tfa/voip.preset"
 
-#define EQ_PLAYBACK "/system/etc/tfa/playback.eq"
-#define EQ_VOICE "/system/etc/tfa/voice.eq"
-#define EQ_VOIP "/system/etc/tfa/voip.eq"
+#define EQ_PLAYBACK "/vendor/etc/tfa/playback.eq"
+#define EQ_VOICE "/vendor/etc/tfa/voice.eq"
+#define EQ_VOIP "/vendor/etc/tfa/voip.eq"
 
-#define DRC_PLAYBACK "/system/etc/tfa/playback.drc"
-#define DRC_VOICE "/system/etc/tfa/voice.drc"
-#define DRC_VOIP "/system/etc/tfa/voip.drc"
+#define DRC_PLAYBACK "/vendor/etc/tfa/playback.drc"
+#define DRC_VOICE "/vendor/etc/tfa/voice.drc"
+#define DRC_VOIP "/vendor/etc/tfa/voip.drc"
 
 #define MIN(a,b) ((a)<(b)?(a):(b))
 #define ROUND_DOWN(a,n) (((a)/(n))*(n))
