@@ -161,7 +161,7 @@ TARGET_USES_WCNSS_CTRL      := true
 TARGET_USES_QCOM_WCNSS_QMI  := true
 WIFI_DRIVER_FW_PATH_AP      := "ap"
 WIFI_DRIVER_FW_PATH_STA     := "sta"
-WIFI_DRIVER_MODULE_PATH     := "/system/lib/modules/wlan.ko"
+#WIFI_DRIVER_MODULE_PATH     := "/system/lib/modules/wlan.ko"
 WIFI_DRIVER_MODULE_NAME     := "wlan"
 
 # inherit from the proprietary version
