@@ -455,9 +455,6 @@ bin/time_daemon:vendor/bin/time_daemon
 -vendor/lib/libTimeService.so
 
 # Widevine
-lib/libdrmdecrypt.so:vendor/lib/libdrmdecrypt.so
-vendor/lib/drm/libdrmwvmplugin.so
-vendor/lib/libwvdrm_L1.so
-vendor/lib/libwvm.so
-vendor/lib/libWVStreamControlAPI_L1.so
+vendor/lib/libdrmdecrypt.so
+vendor/lib64/mediadrm/libwvdrmengine.so
 vendor/lib/mediadrm/libwvdrmengine.so
