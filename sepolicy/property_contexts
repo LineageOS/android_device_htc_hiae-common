@@ -11,3 +11,5 @@ ro.pdn.profile                  u:object_r:radio_prop:s0
 ro.phone.min_match              u:object_r:radio_prop:s0
 ro.telephony.ipv6_capability    u:object_r:radio_prop:s0
 VOLTE_PROFILE                   u:object_r:radio_prop:s0
+
+ro.wcnss.serialno               u:object_r:wcnss_prop:s0
