@@ -1,1 +1,3 @@
 allow wcnss_service proc_wcnss_service:file r_file_perms;
+get_prop(wcnss_service, wcnss_prop)
+set_prop(wcnss_service, wcnss_prop)
