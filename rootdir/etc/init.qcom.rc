@@ -385,7 +385,7 @@ service netmgrd /system/vendor/bin/netmgrd
     group root wifi wakelock radio inet
     writepid /dev/cpuset/system-background/tasks
 
-service op-prop /system/bin/operator-properties
+service op-prop /system/vendor/bin/operator-properties
     class main
     disabled
     oneshot

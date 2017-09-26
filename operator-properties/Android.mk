@@ -9,5 +9,6 @@ LOCAL_SRC_FILES := operator-properties.cpp
 LOCAL_MODULE := operator-properties
 LOCAL_MODULE_TAGS := optional
 LOCAL_SHARED_LIBRARIES := libcutils liblog libtinyxml
+LOCAL_VENDOR_MODULE := true
 
 include $(BUILD_EXECUTABLE)
