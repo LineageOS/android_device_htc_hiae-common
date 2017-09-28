@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "65c20d76_94550d03",
+        "filename": "rootdir/Android.mk",
+        "patchSetId": 2
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 13648
+      },
+      "writtenOn": "2017-09-28T20:05:13Z",
+      "side": 1,
+      "message": "You probably wanted to move this one to vendor, not the init.qcom.power.rc script.",
+      "range": {
+        "startLine": 45,
+        "startChar": 24,
+        "endLine": 45,
+        "endChar": 39
+      },
+      "revId": "09b2759ffe0273e6f2d80673d6148ec9fd11d318",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    }
+  ]
+}
