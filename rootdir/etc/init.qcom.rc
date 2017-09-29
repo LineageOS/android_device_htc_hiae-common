@@ -288,6 +288,9 @@ on boot
     # Wifi firmware reload path
     chown wifi wifi /sys/module/wlan/parameters/fwpath
 
+    # Bluetooth MAC address
+    chown bluetooth bluetooth /sys/module/htc_bdaddress/parameters/bdaddress
+
 # Services begin here
 
 service adsprpcd /system/vendor/bin/adsprpcd
