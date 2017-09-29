@@ -37,6 +37,7 @@
 /sys/devices/soc.0/78b8000.i2c/i2c-4/4-0072/iio:device0(/.*)?           u:object_r:sysfs_sensors:s0
 /sys/devices/virtual/htc_sensorhub(/.*)?                                u:object_r:sysfs_sensors:s0
 /sys/devices/virtual/timed_output/vibrator/voltage_level                u:object_r:sysfs_vibrator:s0
+/sys/module/htc_bdaddress/parameters/bdaddress                          u:object_r:sysfs_bluetooth_writable:s0
 
 # Vendor binaries
 /system/bin/audiod                          u:object_r:audiod_exec:s0

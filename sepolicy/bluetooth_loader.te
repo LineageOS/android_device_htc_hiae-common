@@ -12,6 +12,7 @@ allow bluetooth_loader bluetooth_loader_exec:file { getattr open execute_no_tran
 # Set persist.service.bdroid.* and bluetooth.* property values
 set_prop(bluetooth_loader, bluetooth_prop)
 
-# Allow getprop/setprop for init.qcom.bt.sh
+allow bluetooth_loader smd_device:chr_file rw_file_perms;
+allow bluetooth_loader sysfs_bluetooth_writable:file r_file_perms;
 allow bluetooth_loader system_file:file execute_no_trans;
 allow bluetooth_loader toolbox_exec:file rx_file_perms;
