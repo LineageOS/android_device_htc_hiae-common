@@ -4,7 +4,7 @@ type debugfs_rmt, debugfs_type, fs_type;
 
 # files
 type carrier_file, fs_type;
-allow carrier_file rootfs:filesystem associate;
+allow carrier_file labeledfs:filesystem associate;
 allow firmware_file rootfs:filesystem associate;
 
 # proc
