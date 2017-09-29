@@ -1,0 +1,4 @@
+allow qti_init_shell carrier_file:dir search;
+allow qti_init_shell carrier_file:file create_file_perms;
+allow qti_init_shell shell_exec:file { entrypoint getattr read };
+allow qti_init_shell toolbox_exec:file rx_file_perms;
