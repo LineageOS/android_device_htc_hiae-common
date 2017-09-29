@@ -36,7 +36,7 @@ setprop bluetooth.status off
 
 # Note that "hci_qcomm_init -e" prints expressions to set the shell variables
 # BTS_DEVICE, BTS_TYPE, BTS_BAUD, and BTS_ADDRESS.
-eval $(/system/bin/hci_qcomm_init -e -P 1 && echo "exit_code_hci_qcomm_init=0" || echo "exit_code_hci_qcomm_init=1")
+eval $(/system/vendor/bin/hci_qcomm_init -e -P 1 && echo "exit_code_hci_qcomm_init=0" || echo "exit_code_hci_qcomm_init=1")
 case $exit_code_hci_qcomm_init in
   0)
       logi "Bluetooth QSoC firmware download succeeded, $BTS_DEVICE $BTS_TYPE $BTS_BAUD $BTS_ADDRESS"
