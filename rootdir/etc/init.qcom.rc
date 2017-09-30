@@ -309,16 +309,16 @@ service fingerprintd /system/bin/fingerprintd
     group system input
     writepid /dev/cpuset/system-background/tasks
 
-service hciattach /system/bin/sh /system/etc/init.qcom.bt.sh
+service hciattach /system/bin/hci_qcomm_init -e
     class late_start
     user bluetooth
     group bluetooth net_bt_admin
-    seclabel u:r:bluetooth_loader:s0
     disabled
     oneshot
 
 on property:bluetooth.hciattach=true
     start hciattach
+    setprop bluetooth.status on
 
 on property:bluetooth.hciattach=false
     setprop bluetooth.status off
