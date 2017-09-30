@@ -4,6 +4,9 @@
 /dev/tfa9887                                u:object_r:audio_device:s0
 /dev/tfa9887l                               u:object_r:audio_device:s0
 
+# Bluetooth
+/system/bin/hci_qcomm_init                  u:object_r:bluetooth_loader_exec:s0
+
 # Carrier
 /carrier(/.*)?                              u:object_r:carrier_file:s0
 
