@@ -1,2 +1,8 @@
 [AID_QCOM_DIAG]
 value:2950
+
+[AID_RFS]
+value:3012
+
+[AID_RFS_SHARED]
+value:3013
