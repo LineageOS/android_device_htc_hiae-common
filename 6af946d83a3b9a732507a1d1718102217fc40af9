@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b0038dc5_dd00f8df",
+        "filename": "gestures/AndroidManifest.xml",
+        "patchSetId": 1
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 2936
+      },
+      "writtenOn": "2017-10-04T21:08:41Z",
+      "side": 1,
+      "message": "This is cool stuff",
+      "range": {
+        "startLine": 36,
+        "startChar": 12,
+        "endLine": 38,
+        "endChar": 75
+      },
+      "revId": "6af946d83a3b9a732507a1d1718102217fc40af9",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    }
+  ]
+}
