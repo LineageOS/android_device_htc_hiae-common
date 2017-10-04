@@ -8,6 +8,10 @@
 
     <protected-broadcast android:name="org.lineageos.settings.device.FP_HOME" />
 
+    <uses-sdk
+        android:minSdkVersion="26"
+        android:targetSdkVersion="26" />
+
     <application
         android:icon="@mipmap/ic_launcher_settings"
         android:label="@string/device_settings_app_name"
@@ -42,25 +46,33 @@
 
         <activity
             android:name=".TouchscreenGestureSettingsActivity"
-            android:label="@string/touchscreen_gesture_settings_title">
+            android:label="@string/touchscreen_gesture_settings_title"
+            android:theme="@style/Theme.Main">
             <intent-filter>
-                <action android:name="org.lineageos.settings.device.GESTURE_SETTINGS" />
-                <category android:name="android.intent.category.DEFAULT" />
+                <action android:name="com.android.settings.action.IA_SETTINGS" />
             </intent-filter>
+            <meta-data
+                android:name="com.android.settings.category"
+                android:value="com.android.settings.category.ia.display" />
+            <meta-data
+                android:name="com.android.settings.summary"
+                android:value="@string/touchscreen_gesture_settings_summary" />
         </activity>
 
         <activity
             android:name=".ButtonSettingsActivity"
-            android:label="@string/button_panel_title">
+            android:label="@string/button_panel_title"
+            android:icon="@drawable/ic_settings_additional_buttons"
+            android:theme="@style/Theme.Main">
             <intent-filter>
-                <action android:name="com.android.settings.action.EXTRA_SETTINGS" />
+                <action android:name="com.android.settings.action.IA_SETTINGS" />
             </intent-filter>
             <meta-data
-                android:name="com.android.settings.icon"
-                android:resource="@drawable/ic_settings_additional_buttons" />
-            <meta-data
                 android:name="com.android.settings.category"
-                android:value="com.android.settings.category.device" />
+                android:value="com.android.settings.category.ia.system" />
+            <meta-data
+                android:name="com.android.settings.summary"
+                android:resource="@string/button_settings_summary" />
         </activity>
 
         <activity android:name=".KeyHandler" />

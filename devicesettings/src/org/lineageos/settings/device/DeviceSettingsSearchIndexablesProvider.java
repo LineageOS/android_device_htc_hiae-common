@@ -41,9 +41,6 @@ public class DeviceSettingsSearchIndexablesProvider extends SearchIndexablesProv
             new SearchIndexableResource(1, R.xml.button_panel,
                     ButtonSettingsActivity.class.getName(),
                     R.drawable.ic_settings_additional_buttons),
-            new SearchIndexableResource(1, R.xml.gesture_panel,
-                    TouchscreenGestureSettingsActivity.class.getName(),
-                    R.drawable.ic_settings_gestures),
     };
 
     @Override
