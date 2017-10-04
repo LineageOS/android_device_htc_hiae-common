@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-      package="com.cyanogenmod.settings.device"
+      package="org.lineageos.settings.device"
       android:sharedUserId="android.uid.system">
 
     <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
     <uses-permission android:name="android.permission.WRITE_SECURE_SETTINGS" />
 
-    <protected-broadcast android:name="com.cyanogenmod.settings.device.FP_HOME" />
+    <protected-broadcast android:name="org.lineageos.settings.device.FP_HOME" />
 
     <application
         android:icon="@mipmap/ic_launcher_settings"
@@ -18,7 +18,7 @@
 
         <provider
             android:name=".DeviceSettingsSearchIndexablesProvider"
-            android:authorities="com.cyanogenmod.settings.device"
+            android:authorities="org.lineageos.settings.device"
             android:multiprocess="false"
             android:grantUriPermissions="true"
             android:permission="android.permission.READ_SEARCH_INDEXABLES"
@@ -28,7 +28,7 @@
             </intent-filter>
         </provider>
 
-        <receiver android:name="com.cyanogenmod.settings.device.BootCompletedReceiver">
+        <receiver android:name="org.lineageos.settings.device.BootCompletedReceiver">
             <intent-filter>
                 <action android:name="android.intent.action.BOOT_COMPLETED" />
                 <category android:name="android.intent.category.DEFAULT" />
@@ -36,7 +36,7 @@
         </receiver>
 
         <service
-            android:name="com.cyanogenmod.settings.device.HtcGestureService"
+            android:name="org.lineageos.settings.device.HtcGestureService"
             android:permission="HtcGestureService">
         </service>
 
@@ -44,7 +44,7 @@
             android:name=".TouchscreenGestureSettingsActivity"
             android:label="@string/touchscreen_gesture_settings_title">
             <intent-filter>
-                <action android:name="org.cyanogenmod.settings.device.GESTURE_SETTINGS" />
+                <action android:name="org.lineageos.settings.device.GESTURE_SETTINGS" />
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>

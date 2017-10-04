@@ -14,10 +14,10 @@
  * limitations under the License.
  */
 
-package com.cyanogenmod.settings.device;
+package org.lineageos.settings.device;
 
 public class Constants {
-    public static final String FP_HOME_INTENT = "com.cyanogenmod.settings.device.FP_HOME";
+    public static final String FP_HOME_INTENT = "org.lineageos.settings.device.FP_HOME";
     public static final String FP_HOME_INTENT_ENABLED = "fp_home";
 
     public static final String FP_HOME_KEY = "fp_home";

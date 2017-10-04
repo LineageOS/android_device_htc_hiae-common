@@ -14,16 +14,20 @@
  * limitations under the License.
  */
 
-package com.cyanogenmod.settings.device;
+package org.lineageos.settings.device;
 
-import android.content.Context;
-import android.content.Intent;
-import android.os.UserHandle;
+import android.app.Fragment;
+import android.app.FragmentTransaction;
+import android.os.Bundle;
 
-public class Utils {
-    public static void broadcastFpEnabled(Context context, boolean enabled) {
-        final Intent intent = new Intent(Constants.FP_HOME_INTENT);
-        intent.putExtra(Constants.FP_HOME_INTENT_ENABLED, enabled);
-        context.sendBroadcastAsUser(intent, UserHandle.CURRENT);
+import com.android.settingslib.drawer.SettingsDrawerActivity;
+
+public class ButtonSettingsActivity extends SettingsDrawerActivity {
+
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+
+        getFragmentManager().beginTransaction().replace(R.id.content_frame,
+                new ButtonSettingsFragment()).commit();
     }
 }

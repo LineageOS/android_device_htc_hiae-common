@@ -1,5 +1,6 @@
 /*
- * Copyright (C) 2017 The LineageOS Project
+ * Copyright (C) 2016 The CyanogenMod Project
+ *               2017 The LineageOS Project
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -14,7 +15,7 @@
  * limitations under the License.
  */
 
-package com.cyanogenmod.settings.device;
+package org.lineageos.settings.device;
 
 import android.app.Fragment;
 import android.app.FragmentTransaction;
@@ -22,12 +23,12 @@ import android.os.Bundle;
 
 import com.android.settingslib.drawer.SettingsDrawerActivity;
 
-public class ButtonSettingsActivity extends SettingsDrawerActivity {
+public class TouchscreenGestureSettingsActivity extends SettingsDrawerActivity {
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
         getFragmentManager().beginTransaction().replace(R.id.content_frame,
-                new ButtonSettingsFragment()).commit();
+                new TouchscreenGestureSettingsFragment()).commit();
     }
 }
