@@ -15,13 +15,44 @@
      See the License for the specific language governing permissions and
      limitations under the License.
 -->
-<resources>
+<resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <style name="Theme.Main" parent="@android:style/Theme.DeviceDefault.Settings">
-        <item name="preferenceTheme">@style/SettingsPreference</item>
+        <item name="preferenceCategoryStyle">@style/Theme.Main.PreferenceCategoryStyle</item>
+        <item name="preferenceFragmentStyle">@style/Theme.Main.PreferenceFragmentStyle</item>
+        <item name="preferenceListStyle">@style/Theme.Main.PreferenceListStyle</item>
+        <item name="preferenceStyle">@style/Theme.Main.PreferenceStyle</item>
+        <item name="preferenceTheme">@style/Theme.Main.PreferenceTheme</item>
+        <item name="switchPreferenceStyle">@style/Theme.Main.SwitchPreferenceStyle</item>
     </style>
 
-    <!-- Preferences -->
-    <style name="SettingsPreference">
+    <style name="Theme.Main.PreferenceCategoryStyle" parent="@*android:style/Preference.DeviceDefault.Category">
+        <item name="android:layout">@layout/preference_category_material_settings</item>
+        <item name="allowDividerAbove">true</item>
+        <item name="allowDividerBelow">true</item>
+    </style>
+
+    <style name="Theme.Main.PreferenceFragmentStyle" parent="@*android:style/PreferenceFragment.Material">
+        <item name="allowDividerAfterLastItem">false</item>
+    </style>
+
+    <style name="Theme.Main.PreferenceListStyle" parent="@*android:style/PreferenceHeaderList.Material">
+    </style>
+
+    <style name="Theme.Main.PreferenceStyle" parent="@*android:style/Preference.DeviceDefault">
+        <item name="allowDividerAbove">false</item>
+        <item name="allowDividerBelow">true</item>
+        <item name="singleLineTitle">false</item>
+        <item name="android:layout">@layout/preference_material_settings</item>
+    </style>
+
+    <style name="Theme.Main.PreferenceTheme" parent="@android:style/Theme.DeviceDefault.Settings">
+        <item name="allowDividerAbove">false</item>
+        <item name="allowDividerBelow">false</item>
+        <item name="singleLineTitle">false</item>
+        <item name="android:iconSpaceReserved">true</item>
+    </style>
+
+    <style name="Theme.Main.SwitchPreferenceStyle" parent="@*android:style/Preference.DeviceDefault.SwitchPreference">
         <item name="allowDividerAbove">false</item>
         <item name="allowDividerBelow">false</item>
         <item name="singleLineTitle">false</item>
