@@ -120,6 +120,10 @@ PRODUCT_PACKAGES += \
     memtrack.msm8952 \
     liboverlay
 
+# Dot View Case
+PRODUCT_PACKAGES += \
+    FlipFlap
+
 # DRM
 PRODUCT_PACKAGES += \
     android.hardware.drm@1.0-impl \
