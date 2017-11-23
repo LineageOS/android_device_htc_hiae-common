@@ -38,7 +38,7 @@ on early-init
     mkdir /firmware/adsp 0771 system system
     mkdir /firmware/radio 0771 system system
     mkdir /firmware/wcnss 0771 system system
-    mkdir /firmware/wsd 0500 rfs rfs
+    mkdir /firmware/wsd 0500 oem_3012 oem_3012
 
     mount debugfs debugfs /sys/kernel/debug
     chmod 0755 /sys/kernel/debug
@@ -326,7 +326,7 @@ service ims_rtp_daemon /system/bin/ims_rtp_daemon
    class main
    user system
    socket ims_rtpd stream 0660 system radio
-   group radio net_raw qcom_diag inet log
+   group radio net_raw oem_2950 inet log
    disabled
 
 on property:sys.ims.DATA_DAEMON_STATUS=1
@@ -335,7 +335,7 @@ on property:sys.ims.DATA_DAEMON_STATUS=1
 service imscmservice /system/bin/imscmservice
     class main
     user system
-    group radio net_raw qcom_diag log
+    group radio net_raw oem_2950 log
     writepid /dev/cpuset/system-background/tasks
     disabled
 
@@ -346,7 +346,7 @@ service imsdatadaemon /system/bin/imsdatadaemon
     class main
     user system
     socket ims_datad stream 0660 system radio
-    group system wifi radio inet net_raw log qcom_diag net_admin
+    group system wifi radio inet net_raw log oem_2950 net_admin
     writepid /dev/cpuset/system-background/tasks
     disabled
 
@@ -357,14 +357,14 @@ service imsqmidaemon /system/bin/imsqmidaemon
     class main
     user system
     socket ims_qmid stream 0660 system radio
-    group radio net_raw log qcom_diag
+    group radio net_raw log oem_2950
     writepid /dev/cpuset/system-background/tasks
 
 service ipacm-diag /system/vendor/bin/ipacm-diag
     class main
     user system
     socket ipacm_log_file dgram 660 system net_admin
-    group net_admin qcom_diag
+    group net_admin oem_2950
     writepid /dev/cpuset/system-background/tasks
 
 service ipacm /system/vendor/bin/ipacm
@@ -439,7 +439,7 @@ service qcom-sh /system/vendor/bin/init.qcom.sh
 service qmuxd /system/vendor/bin/qmuxd
     class main
     user root
-    group radio audio bluetooth gps qcom_diag
+    group radio audio bluetooth gps oem_2950
     writepid /dev/cpuset/system-background/tasks
 
 service qseecomd /system/vendor/bin/qseecomd
@@ -451,7 +451,7 @@ service qseecomd /system/vendor/bin/qseecomd
 service qti /system/vendor/bin/qti
     class main
     user radio
-    group radio net_raw qcom_diag usb net_admin
+    group radio net_raw oem_2950 usb net_admin
     writepid /dev/cpuset/system-background/tasks
 
 service rmt_storage /system/vendor/bin/rmt_storage
