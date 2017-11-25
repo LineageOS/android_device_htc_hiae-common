@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "fedcea6d_2409789e",
+        "filename": "devicesettings/src/com/cyanogenmod/settings/device/KeyHandler.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 11801
+      },
+      "writtenOn": "2017-11-25T13:44:00Z",
+      "side": 1,
+      "message": "this should be \"return event\", not \"return false\"",
+      "revId": "2fcc16052fb27845e907cf60c02ff5cf12eca3af",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    }
+  ]
+}
