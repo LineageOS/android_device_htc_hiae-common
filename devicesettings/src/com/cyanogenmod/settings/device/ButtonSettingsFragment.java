@@ -35,7 +35,20 @@ public class ButtonSettingsFragment extends PreferenceFragment
 
         SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(getContext());
         doFpHomePreferenceChange(prefs);
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(getContext());
         prefs.registerOnSharedPreferenceChangeListener(this);
+    }
+
+    @Override
+    public void onPause() {
+        super.onPause();
+        SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(getContext());
+        prefs.unregisterOnSharedPreferenceChangeListener(this);
     }
 
     @Override
