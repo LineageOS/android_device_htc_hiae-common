@@ -43,17 +43,17 @@ public class KeyHandler implements DeviceKeyHandler {
     }
 
     @Override
-    public KeyEvent handleKeyEvent(KeyEvent event) {
+    public boolean handleKeyEvent(KeyEvent event) {
         if (!hasSetupCompleted()) {
-            return event;
+            return false;
         }
 
         if (event.getKeyCode() == KeyEvent.KEYCODE_HOME && event.getScanCode() == 143) {
             /* Consume the home keypress if not enabled */
-            return !mFpHomeEnabled ? null : event;
+            return !mFpHomeEnabled;
         }
 
-        return event;
+        return false;
     }
 
     private boolean hasSetupCompleted() {
