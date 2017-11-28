@@ -858,7 +858,11 @@ void CameraDevice::releaseRecordingFrameLocked(
                 return;
             }
         }
+        VideoNativeHandleMetadata* md = (VideoNativeHandleMetadata*) data;
+        native_handle_t* nh = md->pHandle;
         mDevice->ops->release_recording_frame(mDevice, data);
+        native_handle_close(nh);
+        native_handle_delete(nh);
     }
 }
 
