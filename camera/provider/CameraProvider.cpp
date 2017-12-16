@@ -15,10 +15,12 @@
  */
 
 #define LOG_TAG "CamProvider@2.4-impl"
+//#define LOG_NDEBUG 0
 #include <android/log.h>
 
 #include "CameraProvider.h"
 #include "CameraDevice_1_0.h"
+#include <cutils/properties.h>
 #include <string.h>
 #include <utils/Trace.h>
 
@@ -35,6 +37,7 @@ const char *kLegacyProviderName = "legacy/0";
 // "device@<version>/legacy/<id>"
 const std::regex kDeviceNameRE("device@([0-9]+\\.[0-9]+)/legacy/(.+)");
 const char *kHAL3_2 = "3.2";
+const char *kHAL3_3 = "3.3";
 const char *kHAL1_0 = "1.0";
 const int kMaxCameraDeviceNameLen = 128;
 const int kMaxCameraIdLen = 16;
@@ -133,6 +136,22 @@ std::string CameraProvider::getLegacyCameraId(const hidl_string& deviceName) {
     return cameraId;
 }
 
+int CameraProvider::getCameraDeviceVersion(const hidl_string& deviceName) {
+    std::string deviceVersion;
+    bool match = matchDeviceName(deviceName, &deviceVersion, nullptr);
+    if (!match) {
+        return -1;
+    }
+    if (deviceVersion == kHAL3_3) {
+        return CAMERA_DEVICE_API_VERSION_3_3;
+    } else if (deviceVersion == kHAL3_2) {
+        return CAMERA_DEVICE_API_VERSION_3_2;
+    } else if (deviceVersion == kHAL1_0) {
+        return CAMERA_DEVICE_API_VERSION_1_0;
+    }
+    return 0;
+}
+
 std::string CameraProvider::getHidlDeviceName(
         std::string cameraId, int deviceVersion) {
     // Maybe consider create a version check method and SortedVec to speed up?
@@ -142,10 +161,12 @@ std::string CameraProvider::getHidlDeviceName(
             deviceVersion != CAMERA_DEVICE_API_VERSION_3_4 ) {
         return hidl_string("");
     }
-    const char* versionStr = (deviceVersion == CAMERA_DEVICE_API_VERSION_1_0) ? kHAL1_0 : kHAL3_2;
+    bool isV1 = deviceVersion == CAMERA_DEVICE_API_VERSION_1_0;
+    int versionMajor = isV1 ? 1 : 3;
+    int versionMinor = isV1 ? 0 : mPreferredHal3MinorVersion;
     char deviceName[kMaxCameraDeviceNameLen];
-    snprintf(deviceName, sizeof(deviceName), "device@%s/legacy/%s",
-            versionStr, cameraId.c_str());
+    snprintf(deviceName, sizeof(deviceName), "device@%d.%d/legacy/%s",
+            versionMajor, versionMinor, cameraId.c_str());
     return deviceName;
 }
 
@@ -187,6 +208,19 @@ bool CameraProvider::initialize() {
         ALOGE("Could not set camera module callback: %d (%s)", err, strerror(-err));
         mModule.clear();
         return true;
+    }
+
+    mPreferredHal3MinorVersion = property_get_int32("ro.camera.wrapper.hal3TrebleMinorVersion", 3);
+    ALOGV("Preferred HAL 3 minor version is %d", mPreferredHal3MinorVersion);
+    switch(mPreferredHal3MinorVersion) {
+        case 2:
+        case 3:
+            // OK
+            break;
+        default:
+            ALOGW("Unknown minor camera device HAL version %d in property "
+                    "'camera.wrapper.hal3TrebleMinorVersion', defaulting to 3", mPreferredHal3MinorVersion);
+            mPreferredHal3MinorVersion = 3;
     }
 
     mNumberOfLegacyCameras = mModule->getNumberOfCameras();
