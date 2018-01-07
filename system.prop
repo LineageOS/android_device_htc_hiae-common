@@ -1,20 +1,26 @@
 # Audio
-audio_hal.period_size=192
-audio.offload.buffer.size.kb=1024
-audio.offload.multiple.enabled=false
-audio.offload.pcm.16bit.enable=true
-audio.offload.pcm.24bit.enable=true
-av.offload.enable=true
+af.fast_track_multiplier=1
+audio.deep_buffer.media=true
+ro.vendor.audio.sdk.ssr=false
+vendor.audio_hal.period_size=192
 
-ro.qc.sdk.audio.fluencetype=fluence
-ro.qc.sdk.audio.ssr=false
-use.voice.path.for.pcm.voip=true
+vendor.audio.rec.playback.conc.disabled=false
+vendor.voice.playback.conc.disabled=false
+vendor.voice.record.conc.disabled=false
+vendor.voice.voip.conc.disabled=false
 
-persist.audio.fluence.voicecall=true
-persist.audio.fluence.voicerec=false
-persist.audio.fluence.speaker=true
+ro.vendor.audio.sdk.fluencetype=fluence
+persist.vendor.audio.fluence.voicecall=true
+persist.vendor.audio.fluence.voicerec=false
+persist.vendor.audio.fluence.speaker=true
+vendor.voice.path.for.pcm.voip=true
 
-rec.playback.conc.disabled=true
+audio.offload.min.duration.secs=30
+audio.offload.video=true
+vendor.audio.offload.buffer.size.kb=1024
+vendor.audio.offload.gapless.enabled=true
+vendor.audio.offload.multiple.enabled=false
+vendor.audio.offload.track.enable=true
 
 audio.ds1.metainfo.key=273
 dmid=-1286820014
