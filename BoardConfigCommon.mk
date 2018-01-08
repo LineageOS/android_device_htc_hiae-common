@@ -122,7 +122,9 @@ BOARD_NFC_CHIPSET := pn548
 BOARD_NFC_HAL_SUFFIX := msm8952
 
 # Power
-TARGET_POWERHAL_VARIANT := qcom
+TARGET_HAS_LEGACY_POWER_STATS := true
+TARGET_HAS_NO_WIFI_STATS := true
+TARGET_USES_INTERACTION_BOOST := true
 
 # Properties
 TARGET_SYSTEM_PROP := $(COMMON_PATH)/system.prop
@@ -139,6 +141,7 @@ TARGET_RECOVERY_FSTAB := $(COMMON_PATH)/rootdir/etc/recovery.fstab
 TARGET_RIL_VARIANT := caf
 
 # SELinux
+-include device/lineage/sepolicy/qcom/sepolicy.mk
 BOARD_SEPOLICY_DIRS += $(COMMON_PATH)/sepolicy
 
 # Wifi
