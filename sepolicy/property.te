@@ -21,7 +21,6 @@ type qemu_hw_mainkeys_prop, property_type;
 type qti_prop, property_type;
 type rmnet_mux_prop, property_type;
 type sdm_idle_time_prop, property_type;
-type sf_lcd_density_prop, property_type;
 type sys_usb_configfs_prop, property_type;
 type sys_usb_controller_prop, property_type;
 type sys_usb_tethering_prop, property_type;
